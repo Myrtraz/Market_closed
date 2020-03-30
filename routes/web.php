@@ -28,6 +28,7 @@ Route::get('/home/product', 'HomeController@product')->name('product');
 //Rutas Autenticadas por el usuario
 
 Route::group(['middleware' =>'auth'], function() {
+
 	Route::get('/home/sales', 'HomeController@sales')->name('sales');
 
 	Route::get('/home/sales/add', 'SoldController@product')->name('upProduct');
@@ -36,7 +37,8 @@ Route::group(['middleware' =>'auth'], function() {
 	Route::get('/home/product/buying', 'SoldController@buy')->name('buy');
 	Route::post('/home/product/buying', 'SoldController@toBuy')->name('toBuy');
 
-	Route::get('/settings', 'HomeController@settings')->name('settings');
 	Route::get('/logout', 'LoginController@logout')->name('logout');
+
+	Route::resource('/home/account', 'AccountController');
 });
 

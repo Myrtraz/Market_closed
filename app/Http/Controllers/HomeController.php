@@ -17,9 +17,4 @@ class HomeController extends Controller
     public function sales() {
     	return view('sales');
     }
-
-
-    public function settings() {
-    	return view('settings');
-    }
 }

@@ -76,7 +76,7 @@
                         <div class="dropdown-menu dropdown-menu-lg-right">
                             <a href="#" class="dropdown-item">Compras</a>
                             <a href="{{route('sales')}}" class="dropdown-item">Ventas</a>
-                            <a href="{{route('settings')}}" class="dropdown-item">Mis Datos</a>
+                            <a href="{{route('account.index')}}" class="dropdown-item">Mis Datos</a>
                             <a href="#" class="dropdown-item">Seguridad</a>
                             <a href="{{route('logout')}}" class="dropdown-item">Salir</a>
                         </div>
