@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sold extends Model
+class Sales extends Model
 {
-	protected $fillable = [
+    protected $fillable = [
 		'title',
     	'description',
     	'prices',

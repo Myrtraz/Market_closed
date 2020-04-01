@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Buy;
 use App\Http\Requests\AddProduct;
 use App\Http\Requests\BuyRequest;
-use App\Sold;
+use App\Sales;
 use Illuminate\Http\Request;
 
 class SoldController extends Controller
@@ -27,7 +27,7 @@ class SoldController extends Controller
 
     public function toSell(AddProduct $request){
     	$product = $request->all();
-		$toSell = Sold::create($product);
+		$toSell = Sales::create($product);
 
     	return redirect()->route('sales');
     }

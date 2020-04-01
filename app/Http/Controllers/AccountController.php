@@ -31,4 +31,16 @@ class AccountController extends Controller
 
         return redirect()->back();
     }
+
+    public function updatePersonalData(UpdatePersonalDataRequest $request, $id)
+    {
+        $edits = User::find($id);
+
+        if (! is_null($edits)) {
+            $edits->fill($request->all());
+            $edits->save();
+        }
+
+        return redirect()->back();
+    }
 }

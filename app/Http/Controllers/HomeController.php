@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Sales;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function homeStart() {
-    	return view('home');
+    	$products = Sales::get()->all();
+    	return view('home', compact('products'));
     }
 
-    public function product() {
-    	return view('product');
+    public function product($id) {
+    	$product = Sales::find($id);
+    	return view('product', compact('product'));
     }
 
     public function sales() {

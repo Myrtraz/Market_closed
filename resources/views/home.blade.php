@@ -63,62 +63,22 @@
         <div class="row">
             <div class="col-12">
                 <div class="row">
+                    @foreach($products as $product)
                     <div class="col-3">
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-img">
-                                    <a href="{{route('product')}}" class="text-decoration-none"><img src="https://psmedia.playstation.com/is/image/psmedia/ps4-slim-black-two-column-buy-01-en-13nov18_1542102620416?$Icon$" alt="..." class="card-img-top"></a>
+                                    <a href="{{route('product', $product->id)}}" class="text-decoration-none"><img src="{{$product->cover}}" alt="..." class="card-img-top"></a>
                                 </div>
                                 <hr>
                                 <div class="card-title">
-                                    <h3 class="text-center">$ 2300.000</h3>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel voluptate explicabo, aliquid, repellendus nisi eum.</p>
+                                    <h3 class="text-center">$ {{$product->prices}}</h3>
+                                    <p class="text-muted">{{$product->title}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-img">
-                                    <img src="https://psmedia.playstation.com/is/image/psmedia/ps4-slim-black-two-column-buy-01-en-13nov18_1542102620416?$Icon$" alt="..." class="card-img-top">
-                                </div>
-                                <hr>
-                                <div class="card-title">
-                                    <h3 class="text-center">$ 2300.000</h3>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel voluptate explicabo, aliquid, repellendus nisi eum.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-img">
-                                    <img src="https://psmedia.playstation.com/is/image/psmedia/ps4-slim-black-two-column-buy-01-en-13nov18_1542102620416?$Icon$" alt="..." class="card-img-top">
-                                </div>
-                                <hr>
-                                <div class="card-title">
-                                    <h3 class="text-center">$ 2300.000</h3>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel voluptate explicabo, aliquid, repellendus nisi eum.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-img">
-                                    <img src="https://psmedia.playstation.com/is/image/psmedia/ps4-slim-black-two-column-buy-01-en-13nov18_1542102620416?$Icon$" alt="..." class="card-img-top">
-                                </div>
-                                <hr>
-                                <div class="card-title">
-                                    <h3 class="text-center">$ 2300.000</h3>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel voluptate explicabo, aliquid, repellendus nisi eum.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                @endforeach
                 </div>
             </div>
         </div>

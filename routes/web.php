@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return redirect()->route('home');
 });
 
 Route::get('/register', 'RegisterController@registerClient')->name('register');
@@ -22,7 +22,7 @@ Route::get('/login', 'LoginController@loginClient')->name('login');
 Route::post('/login', 'LoginController@loggedIn')->name('loggedIn');
 
 Route::get('/home', 'HomeController@homeStart')->name('home');
-Route::get('/home/product', 'HomeController@product')->name('product');
+Route::get('/home/product/{id}', 'HomeController@product')->name('product');
 
 
 //Rutas Autenticadas por el usuario
@@ -40,5 +40,6 @@ Route::group(['middleware' =>'auth'], function() {
 	Route::get('/logout', 'LoginController@logout')->name('logout');
 
 	Route::resource('/home/account', 'AccountController');
+	Route::post('/home/account', 'AccountController@updatePersonalData')->name('personalData');
 });
 
