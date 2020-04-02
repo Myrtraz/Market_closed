@@ -24,14 +24,12 @@ class BuyRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => 'required',
-            "lastname" => 'required',
-            "state" => 'required',
-            "country" => 'required',
-            "address" => 'required',
-            "additionalData" => 'required',
-            "district" => 'required',
-            "phone" => 'required',
+        'buyer_id' =>'required',
+        'seller_id' =>'required',
+        'publish_id' =>'required',
+        'status' =>'required',
+        'quantity' =>'required',
+        'total' =>'required',
         ];
     }
 }

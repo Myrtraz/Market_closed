@@ -14,11 +14,15 @@ class AddNewColumnsForPersonalUserData extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('username')->after('remember_token')->nullable()->unique();
+            $table->string('username')->after('password')->nullable()->unique();
             $table->integer('document')->after('username')->nullable()->unique();
             $table->integer('phone')->after('document')->nullable()->unique();
             $table->integer('card')->after('phone')->nullable()->unique();
-            $table->string('location')->after('card')->nullable();
+            $table->string('address')->after('card')->nullable();
+            $table->string('state')->after('address')->nullable();
+            $table->string('country')->after('state')->nullable();
+            $table->string('district')->after('country')->nullable();
+            $table->string('additionalData')->after('district')->nullable();
         });
     }
 

@@ -21,29 +21,37 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
-                                <input type="text" name="name" class="form-control mb-2" placeholder="Nombre">
+                                <small class="text-muted h6 m-1">Nombre</small>
+                                <input type="text" name="name" class="form-control mb-2" placeholder="Nombre" value="{{$user->name}}" disabled="">
                             </div>
                             <div class="col-6">
-                                <input type="text" name="lastname" class="form-control mb-2" placeholder="Apellido">
+                                <small class="text-muted h6 m-1">Apellido</small>
+                                <input type="text" name="lastname" class="form-control mb-2" placeholder="Apellido" value="{{$user->lastname}}" disabled="">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <input type="text" name="state" class="form-control mb-2" placeholder="Estado">
+                                <small class="text-muted h6 m-1">Estado</small>
+                                <input type="text" name="state" class="form-control mb-2" placeholder="Estado" value="{{$user->state}}" disabled="">
                             </div>
                             <div class="col-6">
-                                <input type="text" name="country" class="form-control mb-2" placeholder="Ciudad">
+                                <small class="text-muted h6 m-1">País</small>
+                                <input type="text" name="country" class="form-control mb-2" placeholder="Ciudad" value="{{$user->country}}" disabled="">
                             </div>
                         </div>
-                        <input type="text" name="address" class="form-control mb-2" placeholder="Dirección">
+                        <small class="text-muted h6 m-1">Dirección</small>
+                        <input type="text" name="address" class="form-control mb-2" placeholder="Dirección" value="{{$user->address}}" disabled="">
                         <div class="">
-                            <input type="text" name="additionalData" class="form-control" placeholder="Datos Adicionales (Opcional)">
+                            <small class="text-muted h6 m-1">Datos Adicionales</small>
+                            <input type="text" name="additionalData" class="form-control" placeholder="Datos Adicionales (Opcional)" value="{{$user->additionalData}}">
                             <small class="text-muted m-1">
                                 Indicaciones para encontrar tu domicilio
                             </small>
                         </div>
-                        <input type="text" name="district" class="form-control mb-2" placeholder="Barrio (Opcional)">
-                        <input type="number" name="phone" class="form-control mb-2" placeholder="Telefono de Contacto">
+                        <small class="text-muted h6 m-1">Barrio</small>
+                        <input type="text" name="district" class="form-control mb-2" placeholder="Barrio (Opcional)" value="{{$user->district}}" disabled="">
+                        <small class="text-muted h6 m-1">Telefono</small>
+                        <input type="number" name="phone" class="form-control mb-2" placeholder="Telefono de Contacto" value="{{$user->phone}}" disabled="">
                         <button type="submit" class="btn btn-primary float-right">Siguiente</button>
                     </div>
                 </div>
@@ -52,17 +60,17 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-img text-center">
-                            <img src="https://psmedia.playstation.com/is/image/psmedia/ps4-slim-black-two-column-buy-01-en-13nov18_1542102620416?$Icon$" alt="" class="rounded-circle" width="120px" height="120px">
+                            <img src="{{$buy->cover}}" alt="" class="rounded-circle" width="120px" height="120px">
                         </div>
                         <div class="card-title">
-                            <h1 class="text-center">Lorem ipsum.</h1>
+                            <h1 class="text-center">{{$buy->title}}</h1>
                         </div>
-                        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet ipsam labore, autem magnam illo quidem.</p>
-                        <p class="text-center">Cantidad: <strong>1</strong></p>
+                        <p class="text-center">{{$buy->description}}</p>
+                        <p class="text-center">Cantidad: <strong>{{$qty}}</strong></p>
                         <hr>
                         <div class="">
-                            <p>Producto: <span class="float-right">$ <strong>xxxx</strong></span></p>
-                            <p>Envio: <span class="float-right">$ <strong>xxxx</strong></span></p>
+                            <p>Producto: <span class="float-right">$ <strong>{{$buy->prices}}</strong></span></p>
+                            <p>Envio: <span class="float-right">$ <strong>0</strong></span></p>
                         </div>
                         <hr>
                         <div class="">

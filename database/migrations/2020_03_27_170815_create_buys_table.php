@@ -15,6 +15,12 @@ class CreateBuysTable extends Migration
     {
         Schema::create('buys', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('buyer_id');
+            $table->integer('seller_id');
+            $table->integer('publish_id');
+            $table->string('status');
+            $table->integer('quantity');
+            $table->double('total');
             $table->timestamps();
         });
     }

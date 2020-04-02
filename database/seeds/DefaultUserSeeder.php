@@ -21,7 +21,11 @@ class DefaultUserSeeder extends Seeder
         	'document' => "27710261",
         	'phone' => "987654321",
         	'card' => "34215672",
-        	'location' => "Cra.X, #xxx-xxx, bogotá",
+        	'address' => "Cra.X, #xxx-xxx, bogotá",
+            'state' => 'Bogotá',
+            'country' => 'Colombia',
+            'district' => 'Suba',
+            'additionalData' => "Deje to' to la mercancia en un maletin, en un un arbol pela'o que hay al lado de una lagunita, el se llega solo relajao",
         ]);
     }
 }

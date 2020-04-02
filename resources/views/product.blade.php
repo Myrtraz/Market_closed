@@ -50,17 +50,21 @@
                         <br>
                         <span class="text-muted" style="font-size: 12px;">Solo en zonas de Bogotá</span>
                     </p>
-                    <div class="">
+                    <form action="{{route('resumen.buy')}}" method="post">
+                        @csrf
+                        <div>
                         <p>Cantidad</p>
-                        <select name="quantity" id="quantity" class="form-control">
+                        <select name="qty" id="quantity" class="form-control">
                             @for ($i = 1; $i <= $product->quantity; $i++)
                             <option value="{{$i}}">{{$i}}</option>
                             @endfor
                             
                         </select>
+                        <input type="hidden" name="id" value="{{ $product->id }}">
                         <p class="text-muted">({{$product->quantity}} unidades)</p>
                     </div>
-                    <a href="{{route('buy')}}" class="btn btn-primary btn-block">Comprar</a>
+                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
+                    </form>
                 </div>
                 <hr>
             </div>

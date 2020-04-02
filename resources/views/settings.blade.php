@@ -46,10 +46,10 @@
                         <h1 class="m-3 font-weight-bold">Datos Personales</h1>
                     </div>
                     <div class="card-body">
-                        <input type="text" name="name" class="form-control mb-2 col-9 m-1" placeholder="Nombre" value="" disabled="">
-                        <input type="text" name="lastname" class="form-control mb-2 col-9 m-1" placeholder="Apellido" value="" disabled="">
-                        <input type="text" name="document" class="form-control mb-2 col-9 m-1" placeholder="Documento" value="" disabled="">
-                        <input type="text" name="phone" class="form-control mb-2 col-9 m-1" placeholder="Telefono" value="" disabled="">
+                        <input type="text" name="name" class="form-control mb-2 col-9 m-1" placeholder="Nombre" value="{{$account->name}}" disabled="">
+                        <input type="text" name="lastname" class="form-control mb-2 col-9 m-1" placeholder="Apellido" value="{{$account->lastname}}" disabled="">
+                        <input type="text" name="document" class="form-control mb-2 col-9 m-1" placeholder="Documento" value="{{$account->document}}" disabled="">
+                        <input type="text" name="phone" class="form-control mb-2 col-9 m-1" placeholder="Telefono" value="{{$account->phone}}" disabled="">
                         <button type="submit" class="btn btn-warning float-right" disabled="">Editar</button>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                         <h1 class="m-3 font-weight-bold">Tarjeta</h1>
                     </div>
                     <div class="card-body">
-                        <input type="text" class="form-control mb-2 col-9 m-1" placeholder="Tarjeta de Debito o Credito" value="" disabled="">
+                        <input type="text" class="form-control mb-2 col-9 m-1" placeholder="Tarjeta de Debito o Credito" value="{{$account->card}}" disabled="">
                         <button type="submit" class="btn btn-success float-right" disabled="">Agregar</button>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                         <h1 class="m-3 font-weight-bold">Domicilio</h1>
                     </div>
                     <div class="card-body">
-                        <input type="text" class="form-control mb-2 col-9 m-1" placeholder="Ubicación Actual" disabled="">
+                        <input type="text" name="address" class="form-control mb-2 col-9 m-1" placeholder="Ubicación Actual" value="{{$account->address}}" disabled="">
                         <button type="submit" class="btn btn-success float-right" disabled="">Agregar</button>
                     </div>
                 </div>

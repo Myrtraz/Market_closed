@@ -6,7 +6,9 @@ use App\Buy;
 use App\Http\Requests\AddProduct;
 use App\Http\Requests\BuyRequest;
 use App\Sales;
+use App\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class SoldController extends Controller
 {
@@ -14,8 +16,16 @@ class SoldController extends Controller
     	return view('addProduct');
     }
 
-    public function buy() {
-    	return view('buy');
+    public function resume(Request $request)
+    {
+        return redirect()->route('buy', $request->only('id', 'qty'));
+    }
+
+    public function buy($id, $qty) {
+        $user = Auth::user();
+
+        $buy = Sales::find($id);
+    	return view('buy', compact('buy', 'user', 'qty'));
     }
 
     public function toBuy(BuyRequest $request) {

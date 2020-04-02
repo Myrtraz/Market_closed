@@ -13,6 +13,7 @@ class DefaultProductsSeeder extends Seeder
     public function run()
     {
         Sales::create([
+        'user_id' =>1,
         'title' => 'Bicicleta Roadmaster Jumper Doble Susp 29 Shimano21v Bloqueo',
     	'description' => '****LA NUEVA ROADMASTER JUMPER 29" MODELO 2020*** RoadMaster trae para ti Bicicleta Roadmaster Jumper Doble Susp RIN 29 Shimano21v
 
@@ -49,6 +50,7 @@ Producto listo para ser utilizado, solo debes colocar los pedales y listo para r
         ]);
 
         Sales::create([
+        'user_id' =>1,
         'title' => 'Consola Playstation 4 Slim De 1tb +3 Juegos. Sellada. Nueva',
     	'description' => 'PlayStation 4 Slim o PS4 Slim es el último modelo estándar de la consola de octava generación de Sony desde septiembre de 2016. Sus cambios frente a la PS4 original son la reducción de su volumen en un 30%, el peso en un 16% y el consumo energético en un 28% además de un rediseño de sus líneas. La consola viene equipada con 500 GB o 1 TB de capacidad, según modelo. En general, una PS4 más estilizada',
     	'prices' => '1349900',
@@ -60,6 +62,7 @@ Producto listo para ser utilizado, solo debes colocar los pedales y listo para r
         ]);
 
         Sales::create([
+        'user_id' =>1,
         'title' => 'Buso Jersey Mtb Motocross Bmx Downhill Mx Camo Tipo Fox',
     	'description' => 
 '• Producto importado de China
@@ -78,6 +81,7 @@ Producto listo para ser utilizado, solo debes colocar los pedales y listo para r
         ]);
 
         Sales::create([
+        'user_id' =>1,
         'title' => 'Xbox One S 1tb 4k + Extra ! Promocion !',
     	'description' => 
 '- XBOX ONE S 1TB BLANCA ALL DIGITAL MICROSOFT REFURBISHED

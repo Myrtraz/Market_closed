@@ -34,7 +34,9 @@ Route::group(['middleware' =>'auth'], function() {
 	Route::get('/home/sales/add', 'SoldController@product')->name('upProduct');
 	Route::post('/home/sales/add', 'SoldController@toSell')->name('toSell');
 
-	Route::get('/home/product/buying', 'SoldController@buy')->name('buy');
+	Route::post('/home/product/buying/resume', 'SoldController@resume')->name('resumen.buy');
+
+	Route::get('/home/product/buying/{id}/{qty}', 'SoldController@buy')->name('buy');
 	Route::post('/home/product/buying', 'SoldController@toBuy')->name('toBuy');
 
 	Route::get('/logout', 'LoginController@logout')->name('logout');
