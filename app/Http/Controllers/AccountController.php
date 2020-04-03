@@ -43,4 +43,10 @@ class AccountController extends Controller
 
         return redirect()->back();
     }
+
+    public function vendor()
+    {
+        //$account = User::find($id);
+        return view('vendor',compact('account'));
+    }
 }

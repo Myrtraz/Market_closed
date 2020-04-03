@@ -74,14 +74,14 @@
                     <div class="btn-group">
                         <button type="button" class="btn cambioColor dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="background: #FFDD23; font-size: 14px;">User</button>
                         <div class="dropdown-menu dropdown-menu-lg-right">
-                            <a href="#" class="dropdown-item">Compras</a>
+                            <a href="{{route('myShopping')}}" class="dropdown-item">Compras</a>
                             <a href="{{route('sales')}}" class="dropdown-item">Ventas</a>
                             <a href="{{route('account.index')}}" class="dropdown-item">Mis Datos</a>
                             <a href="#" class="dropdown-item">Seguridad</a>
                             <a href="{{route('logout')}}" class="dropdown-item">Salir</a>
                         </div>
                     </div>
-                    <a href="#" class="cambioColor text-decoration-none mx-2" style="font-size: 14px;">Mis compras</a>
+                    <a href="{{route('myShopping')}}" class="cambioColor text-decoration-none mx-2" style="font-size: 14px;">Mis compras</a>
                     <a href="#" class="cambioColor text-decoration-none mx-2" style="font-size: 14px;">Mis favoritos</a>
                     <a href="#" class="cambioColor text-decoration-none mx-2 h5"><i class="fa fa-bell"></i></a>
                     @endauth

@@ -17,7 +17,4 @@ class HomeController extends Controller
     	return view('product', compact('product'));
     }
 
-    public function sales() {
-    	return view('sales');
-    }
 }

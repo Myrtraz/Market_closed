@@ -40,8 +40,8 @@ input[type=number] { -moz-appearance:textfield; }
                 <div class="col-3"></div>
                 <div class="col-6 py-4">
                     <input type="text" name="title" class="mb-2 form-control" placeholder="Titulo">
-                    <div id="editor"class="mb-2" style="background: white;"></div>
-                    <input type="hidden" name="description">
+                    <div id="editor"class="mb-2" style="background: white;" value="{!description!}"></div>
+                    <input type="hidden" name="description" value="{!description!}">
                     <input type="number" name="prices" class="mb-2 form-control col-4 float-right" placeholder="Precio">
                     <div class="mb-3">
                         <select name="quantity" id="quantity" class="form-control col-2">

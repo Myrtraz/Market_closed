@@ -23,21 +23,26 @@ Route::post('/login', 'LoginController@loggedIn')->name('loggedIn');
 
 Route::get('/home', 'HomeController@homeStart')->name('home');
 Route::get('/home/product/{id}', 'HomeController@product')->name('product');
-
+Route::get('/home/vendor', 'AccountController@vendor')->name('vendor');
 
 //Rutas Autenticadas por el usuario
 
 Route::group(['middleware' =>'auth'], function() {
 
-	Route::get('/home/sales', 'HomeController@sales')->name('sales');
+	Route::get('/home/sales', 'SalesController@sales')->name('sales');
 
-	Route::get('/home/sales/add', 'SoldController@product')->name('upProduct');
-	Route::post('/home/sales/add', 'SoldController@toSell')->name('toSell');
+	Route::get('/home/sales/add', 'SalesController@product')->name('upProduct');
+	Route::post('/home/sales/add', 'SalesController@toSell')->name('toSell');
 
-	Route::post('/home/product/buying/resume', 'SoldController@resume')->name('resumen.buy');
+	Route::post('/home/product/buying/resume', 'SalesController@resume')->name('resumen.buy');
 
-	Route::get('/home/product/buying/{id}/{qty}', 'SoldController@buy')->name('buy');
-	Route::post('/home/product/buying', 'SoldController@toBuy')->name('toBuy');
+	Route::get('/home/myShopping', 'ShoppingController@myShopping')->name('myShopping');
+	Route::get('/home/myProducts', 'SalesController@myProducts')->name('myProducts');
+
+	Route::get('/home/product/buying/{id}/{qty}', 'ShoppingController@buy')->name('buy');
+	Route::post('/home/product/buying', 'ShoppingController@toBuy')->name('toBuy');
+	Route::post('/home/product/sale', 'ShoppingController@makeSale')->name('make.sale');
+	Route::get('/home/product/sale/finish', 'ShoppingController@thankForBuying')->name('thanks');
 
 	Route::get('/logout', 'LoginController@logout')->name('logout');
 
