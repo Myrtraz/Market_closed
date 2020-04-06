@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Buy;
+use App\Categories;
 use App\Http\Requests\AddProduct;
 use App\Sales;
 use Auth;
@@ -24,7 +25,8 @@ class SalesController extends Controller
     }
 
     public function product() {
-    	return view('addProduct');
+        $categories = Categories::get();
+    	return view('addProduct', compact('categories'));
     }
 
     public function resume(Request $request)
@@ -36,6 +38,7 @@ class SalesController extends Controller
         $user_id = Auth::user()->id;
     	$title = $request->title;
         $description = $request->description;
+        $category_id = $request->category_id;
         $prices = $request->prices;
         $quantity = $request->quantity;
         $cover = $request->cover;
@@ -45,6 +48,7 @@ class SalesController extends Controller
             'user_id' => $user_id,
             'title' => $title,
             'description' => $description,
+            'category_id' => $category_id,
             'prices' => $prices,
             'quantity' => $quantity,
             'cover' => $cover,

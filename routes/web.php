@@ -37,6 +37,7 @@ Route::group(['middleware' =>'auth'], function() {
 	Route::post('/home/product/buying/resume', 'SalesController@resume')->name('resumen.buy');
 
 	Route::get('/home/myShopping', 'ShoppingController@myShopping')->name('myShopping');
+	Route::get('/home/myShopping/Details', 'ShoppingController@moreDetails')->name('moreDetails');
 	Route::get('/home/myProducts', 'SalesController@myProducts')->name('myProducts');
 
 	Route::get('/home/product/buying/{id}/{qty}', 'ShoppingController@buy')->name('buy');

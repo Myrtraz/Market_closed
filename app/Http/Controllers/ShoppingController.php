@@ -17,6 +17,11 @@ class ShoppingController extends Controller
     	return view('myShopping',compact('shoppings'));
     }
 
+    public function moreDetails()
+    {
+        return view('details');
+    }
+
     public function buy($id, $qty) {
         $user = Auth::user();
 

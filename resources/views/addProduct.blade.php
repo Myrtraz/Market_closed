@@ -42,11 +42,17 @@ input[type=number] { -moz-appearance:textfield; }
                     <input type="text" name="title" class="mb-2 form-control" placeholder="Titulo">
                     <div id="editor"class="mb-2" style="background: white;" value="{!description!}"></div>
                     <input type="hidden" name="description" value="{!description!}">
+                    <select name="category_id" id="category_id" class="form-control mb-2">
+                        @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
                     <input type="number" name="prices" class="mb-2 form-control col-4 float-right" placeholder="Precio">
                     <div class="mb-3">
                         <select name="quantity" id="quantity" class="form-control col-2">
-                            @for($i = 1; $i <= 50; $i++) <option value="{{$i}}">{{$i}}</option>
-                                @endfor
+                            @for($i = 1; $i <= 50; $i++)
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endfor
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary float-right">Agregar</button>
