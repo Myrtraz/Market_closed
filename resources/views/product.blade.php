@@ -2,8 +2,8 @@
 @section('title','Producto')
 @section('background', '#EAECEE')
 @section('content')
-    <style>
-        .grande{
+<style>
+    .grande{
             width: 600px;
             transition: 300ms all ease;
         }
@@ -19,9 +19,18 @@
                     <div class="card-img">
                         <img src="{{$product->cover}}" alt="" style="max-width: 4cm; max-height: 4cm;">
                         <hr>
-                        <img src="" alt="" style="max-width: 4cm; max-height: 4cm;">
+                        @if(!is_null($product->cover1))
+                        <img src="{{$product->cover1}}" alt="" style="max-width: 4cm; max-height: 4cm;">
                         <hr>
-                        <img src="" alt="" style="max-width: 4cm; max-height: 4cm;">
+                        @endif
+                        @if(!is_null($product->cover2))
+                        <img src="{{$product->cover2}}" alt="" style="max-width: 4cm; max-height: 4cm;">
+                        <hr>
+                        @endif
+                        @if(!is_null($product->cover3))
+                        <img src="{{$product->cover3}}" alt="" style="max-width: 4cm; max-height: 4cm;">
+                        <hr>
+                        @endif
                     </div>
                 </div>
                 <div class="mr-4">
@@ -53,17 +62,16 @@
                     <form action="{{route('resumen.buy')}}" method="post">
                         @csrf
                         <div>
-                        <p>Cantidad</p>
-                        <select name="qty" id="quantity" class="form-control">
-                            @for ($i = 1; $i <= $product->quantity; $i++)
-                            <option value="{{$i}}">{{$i}}</option>
-                            @endfor
-                            
-                        </select>
-                        <input type="hidden" name="id" value="{{ $product->id }}">
-                        <p class="text-muted">({{$product->quantity}} unidades)</p>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Comprar</button>
+                            <p>Cantidad</p>
+                            <select name="qty" id="quantity" class="form-control">
+                                @for ($i = 1; $i <= $product->quantity; $i++)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                    @endfor
+                            </select>
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <p class="text-muted">({{$product->quantity}} unidades)</p>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Comprar</button>
                     </form>
                 </div>
                 <hr>
@@ -71,21 +79,24 @@
             <div class="row m-3">
                 <div class="col-8">
                     <h1 class="font-weight-bold mb-5">Descripción</h1>
-                    <pre>{{$product->description}}</pre>
+                    <div>
+                        {!!$product->description!!}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <script type="text/javascript">
-    var zoom = function() {
-            var thumb = document.getElementById("thumb");
+var zoom = function() {
+    var thumb = document.getElementById("thumb");
 
-            if (thumb.className == "card-img-top") {
-                thumb.setAttribute("class", "card-img-top grande");
-            } else{
-                thumb.setAttribute("class", "card-img-top");
-            }
-        }
+    if (thumb.className == "card-img-top") {
+        thumb.setAttribute("class", "card-img-top grande");
+    } else {
+        thumb.setAttribute("class", "card-img-top");
+    }
+}
+
 </script>
 @endsection

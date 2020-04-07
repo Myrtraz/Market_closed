@@ -27,6 +27,8 @@ Route::get('/home/vendor', 'AccountController@vendor')->name('vendor');
 
 Route::get('/home/search', 'HomeController@searchBar')->name('search');
 
+Route::get('/home/categories/{id}', 'HomeController@categories')->name('categories');
+
 //Rutas Autenticadas por el usuario
 
 Route::group(['middleware' =>'auth'], function() {

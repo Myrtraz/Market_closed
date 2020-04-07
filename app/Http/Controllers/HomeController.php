@@ -2,14 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Categories;
 use App\Sales;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function homeStart() {
-    	$products = Sales::get()->all();
-    	return view('home', compact('products'));
+        $categories = Categories::get();
+    	$products = Sales::whereIn('id', [1, 5, 6, 9, 13, 15, 17, 21])->get();
+    	
+        return view('home', compact('products', 'categories'));
+    }
+
+    public function categories($id) {
+        $categories = Categories::find($id)->get();
+
+        $id_category = Sales::where('category_id', '>=', "$categories");
+
+        return view('categories', compact('id_category'));
     }
 
     public function product($id) {
@@ -22,6 +33,7 @@ class HomeController extends Controller
     	$title = $request->get('title');
     	$min = $request->get('min');
     	$max = $request->get('max');
+        $category_id = $request->get('category');
 
     	$query = Sales::query();
 
@@ -31,7 +43,9 @@ class HomeController extends Controller
     		$query->where('title', 'LIKE', "%$keyword%");
     	}
 
-    	//
+    	if (! empty($category_id)) {
+            $query->where('category_id', $category_id);
+        }
 
     	if (! empty($min)) {
     		$query->where('prices', '>=', $min);

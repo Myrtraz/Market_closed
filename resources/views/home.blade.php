@@ -65,10 +65,10 @@
                 <div class="row">
                     @foreach($products as $product)
                     <div class="col-3">
-                        <div class="card">
+                        <div class="card mb-2">
                             <div class="card-body">
                                 <div class="card-img">
-                                    <a href="{{route('product', $product->id)}}" class="text-decoration-none"><img src="{{$product->cover}}" alt="..." class="card-img-top"></a>
+                                    <a href="{{route('product', $product->id)}}" class="text-decoration-none"><img src="{{$product->cover}}" alt="..." style="max-height: 220px; max-width: 250px" class="card-img-top"></a>
                                 </div>
                                 <hr>
                                 <div class="card-title">
@@ -92,35 +92,18 @@
                 <h1 class="text-muted">Categorias</h1>
                 <div class="card">
                     <div class="card-body">
+                        
                         <div class="row">
+                            @foreach($categories as $category)
                             <div class="col-4 text-center">
-                                <a href="#" class="h1"><i class="far fa-futbol" style="color: #1281EF;"></i></a>
-                                <br>
-                                <span><a href="#" class="text-dark text-decoration-none">Deportes y Fitness</a></span>
+                                <a href="{{route('search')  . '?category=' . $category->id}}" class="h1"><i class="{{$category->icon}}" style="color: #1281EF;"></i></a>
+                                    <br>
+                                <a href="{{route('search')  . '?category=' . $category->id}}" class="text-dark text-decoration-none">{{ $category->name }}</a>
                                 <hr>
-                                <a href="#" class="h1"><i class="fas fa-mobile-alt" style="color: #1281EF;"></i></a>
-                                <br>
-                                <a href="#" class="text-dark text-decoration-none">Celulares</a>
                             </div>
-                            <div class="col-4 text-center">
-                                <a href="#" class="h1"><i class="fas fa-headphones" style="color: #1281EF;"></i></a>
-                                <br>
-                                <a href="#" class="text-dark text-decoration-none">Auriculares</a>
-                                <hr>
-                                <a href="#" class="h1"><i class="fas fa-tshirt" style="color: #1281EF;"></i></a>
-                                <br>
-                                <a href="#" class="text-dark text-decoration-none">Camisetas</a>
-                            </div>
-                            <div class="col-4 text-center">
-                                <a href="#" class="h1"><i class="fas fa-couch" style="color: #1281EF;"></i></a>
-                                <br>
-                                <a href="#" class="text-dark text-decoration-none">Muebles</a>
-                                <hr>
-                                <a href="#" class="h1"><i class="fas fa-gamepad" style="color: #1281EF;"></i></a>
-                                <br>
-                                <a href="#" class="text-dark text-decoration-none">Consola y videojuegos</a>
-                            </div>
+                             @endforeach
                         </div>
+                       
                     </div>
                 </div>
             </div>
