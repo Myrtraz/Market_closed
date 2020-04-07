@@ -38,20 +38,20 @@
             </a>
             <div class="col-3">
                 <div class="row form-inline">
-                    <form class="form-row my-2 my-lg-2">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="form-row my-2 my-lg-2" method="get" action="{{route('search')}}">
+                        <input name="title" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn bordery bordered my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                     </form>
                     <div>
                         <div class="btn-group bordered">
                             <button type="button" class="btn cambioColor dropdown-toggle" style="background: #FFDD23; font-size: 14px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categoria</button>
-                            <div class="dropdown-menu" style="background:#696969;">
-                                <a class="dropdown-item" href="#" style="font-size: 14px;">Action</a>
-                                <a class="dropdown-item" href="#" style="font-size: 14px;">Another action</a>
-                                <a class="dropdown-item" href="#" style="font-size: 14px;">Something else here</a>
-                                <a class="dropdown-item" href="#" style="font-size: 14px;">Action</a>
-                                <a class="dropdown-item" href="#" style="font-size: 14px;">Another action</a>
-                                <a class="dropdown-item" href="#" style="font-size: 14px;">Something else here</a>
+                            <div class="dropdown-menu" style="background:#EAECEE;">
+                                <a class="dropdown-item" href="#" style="font-size: 14px;">Deportes y Fitness</a>
+                                <a class="dropdown-item" href="#" style="font-size: 14px;">Celulares</a>
+                                <a class="dropdown-item" href="#" style="font-size: 14px;">Auriculares</a>
+                                <a class="dropdown-item" href="#" style="font-size: 14px;">Camisetas</a>
+                                <a class="dropdown-item" href="#" style="font-size: 14px;">Muebles</a>
+                                <a class="dropdown-item" href="#" style="font-size: 14px;">Consola y Videojuegos</a>
                             </div>
                         </div>
                         <a href="#" class="cambioColor bordered text-decoration-none mx-2" style="font-size: 14px;">Historial</a>

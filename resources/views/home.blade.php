@@ -94,31 +94,31 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-4 text-center">
-                                <span class="h1"><i class="far fa-futbol" style="color: #1281EF;"></i></span>
+                                <a href="#" class="h1"><i class="far fa-futbol" style="color: #1281EF;"></i></a>
                                 <br>
-                                <span>Deportes y Fitness</span>
+                                <span><a href="#" class="text-dark text-decoration-none">Deportes y Fitness</a></span>
                                 <hr>
-                                <span class="h1"><i class="fas fa-mobile-alt" style="color: #1281EF;"></i></span>
+                                <a href="#" class="h1"><i class="fas fa-mobile-alt" style="color: #1281EF;"></i></a>
                                 <br>
-                                <span>Celulares</span>
+                                <a href="#" class="text-dark text-decoration-none">Celulares</a>
                             </div>
                             <div class="col-4 text-center">
-                                <span class="h1"><i class="fas fa-headphones" style="color: #1281EF;"></i></span>
+                                <a href="#" class="h1"><i class="fas fa-headphones" style="color: #1281EF;"></i></a>
                                 <br>
-                                <span>Auriculares</span>
+                                <a href="#" class="text-dark text-decoration-none">Auriculares</a>
                                 <hr>
-                                <span class="h1"><i class="fas fa-tshirt" style="color: #1281EF;"></i></span>
+                                <a href="#" class="h1"><i class="fas fa-tshirt" style="color: #1281EF;"></i></a>
                                 <br>
-                                <span>Camisetas</span>
+                                <a href="#" class="text-dark text-decoration-none">Camisetas</a>
                             </div>
                             <div class="col-4 text-center">
-                                <span class="h1"><i class="fas fa-couch" style="color: #1281EF;"></i></span>
+                                <a href="#" class="h1"><i class="fas fa-couch" style="color: #1281EF;"></i></a>
                                 <br>
-                                <span>Muebles</span>
+                                <a href="#" class="text-dark text-decoration-none">Muebles</a>
                                 <hr>
-                                <span class="h1"><i class="fas fa-gamepad" style="color: #1281EF;"></i></span>
+                                <a href="#" class="h1"><i class="fas fa-gamepad" style="color: #1281EF;"></i></a>
                                 <br>
-                                <span>Consola y videojuegos</span>
+                                <a href="#" class="text-dark text-decoration-none">Consola y videojuegos</a>
                             </div>
                         </div>
                     </div>

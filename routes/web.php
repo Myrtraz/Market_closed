@@ -25,6 +25,8 @@ Route::get('/home', 'HomeController@homeStart')->name('home');
 Route::get('/home/product/{id}', 'HomeController@product')->name('product');
 Route::get('/home/vendor', 'AccountController@vendor')->name('vendor');
 
+Route::get('/home/search', 'HomeController@searchBar')->name('search');
+
 //Rutas Autenticadas por el usuario
 
 Route::group(['middleware' =>'auth'], function() {
