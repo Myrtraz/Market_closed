@@ -39,7 +39,7 @@ class HeadphonesProductsSeeder extends Seeder
     Sales::create([
         'user_id' =>1,
         'category_id' =>3,
-        'title' => '',
+        'title' => 'Auriculares bluetooth i12 TWS inalámbricos',
     	'description' => 
     	'<pre>Auriculares bluetooth i12 TWS inalámbricos de color blanco , rojo , verde , gris . Toque los auriculares de control.
 
