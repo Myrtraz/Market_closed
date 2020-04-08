@@ -45,6 +45,8 @@ Route::group(['middleware' =>'auth'], function() {
 	Route::get('/home/myProducts', 'SalesController@myProducts')->name('myProducts');
 
 	Route::get('/home/product/buying/{id}/{qty}', 'ShoppingController@buy')->name('buy');
+	Route::get('/home/account/address', 'AccountController@Addresses')->name('addresses');
+	Route::post('/home/account/address', 'AccountController@myAddresses')->name('myAddresses');
 	Route::post('/home/product/buying', 'ShoppingController@toBuy')->name('toBuy');
 	Route::post('/home/product/sale', 'ShoppingController@makeSale')->name('make.sale');
 	Route::get('/home/product/sale/finish', 'ShoppingController@thankForBuying')->name('thanks');

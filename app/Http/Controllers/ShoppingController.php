@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
+use App\Addresses;
 use App\Buy;
 use App\Http\Requests\BuyRequest;
 use App\Sales;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
 
 class ShoppingController extends Controller
 {
@@ -26,7 +28,14 @@ class ShoppingController extends Controller
         $user = Auth::user();
 
         $buy = Sales::find($id);
-    	return view('buy', compact('buy', 'user', 'qty', 'id'));
+
+        $address = Address::where('user_id',$user->id)
+            ->where('current', true)
+            ->first();
+
+        $addresses = Address::where('user_id',$user->id)->get();
+
+    	return view('buy', compact('buy', 'user', 'qty', 'id', 'address','addresses'));
     }
 
     public function toBuy(BuyRequest $request) {

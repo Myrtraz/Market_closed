@@ -34,29 +34,24 @@
         <div class="row">
             <div class="col-3"></div>
             <div class="col-9">
-                <div class="row">
-                    <div class="col-8">
-                        <form action="{{route('registered')}}" method="post">
+                <form action="{{route('registered')}}" method="post">
+                    <div class="row">
+                        <div class="col-8">
                             @csrf
                             <input type="text" name="name" class="form-control mb-2" placeholder="Nombre">
                             <input type="text" name="lastname" class="form-control mb-2" placeholder="Apellido">
+                        </div>
+                        <div class="col-8 mb-3">
+                            <input type="email" name="email" class="form-control mb-2" placeholder="E-mail">
+                            <input type="password" name="password" class="form-control mb-1" placeholder="Contraseña">
+                        </div>
+                        <div class="col-8">
+                            <button type="submit" class="btn btn-primary mb-3 float-right">Crear cuenta</button>
+                            <p class="small float-right">Al registrarme, declaro que soy mayor de edad y acepto los Términos y condiciones y las Políticas de privacidad de Mercado Cerrado y Mercado Pago.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-8">
-                        <input type="email" name="email" class="form-control mb-2" placeholder="E-mail">
-                        <input type="password" name="password" class="form-control mb-1" placeholder="Contraseña">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-8">
-                        <button type="submit" class="btn btn-primary mb-3 float-right">Crear cuenta</button>
-                        <p class="small float-right">Al registrarme, declaro que soy mayor de edad y acepto los Términos y condiciones y las Políticas de privacidad de Mercado Cerrado y Mercado Pago.</p>
-                    </div>
-                </div>
                 </form>
             </div>
-            <div class="col-3"></div>
         </div>
     </div>
 </section>

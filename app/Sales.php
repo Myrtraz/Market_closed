@@ -18,4 +18,6 @@ class Sales extends Model
     	'cover2',
     	'cover3',
     ];
+
+    
 }

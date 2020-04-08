@@ -40,8 +40,8 @@ input[type=number] { -moz-appearance:textfield; }
                 <div class="col-3"></div>
                 <div class="col-6 py-4">
                     <input type="text" name="title" class="mb-2 form-control" placeholder="Titulo">
-                    <div id="editor"class="mb-2" style="background: white;" value="{!!description!!}"></div>
-                    <input type="hidden" name="description" value="{!!description!!}">
+                    <div id="editor" class="mb-2" style="background: white;"></div>
+                    <input type="hidden" name="description">
                     <select name="category_id" id="category_id" class="form-control mb-2">
                         @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
