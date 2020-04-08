@@ -44,6 +44,8 @@ Route::group(['middleware' =>'auth'], function() {
 	Route::get('/home/myShopping/Details', 'ShoppingController@moreDetails')->name('moreDetails');
 	Route::get('/home/myProducts', 'SalesController@myProducts')->name('myProducts');
 
+
+	Route::get('/home/account/address/set/{id}','AccountController@setAddress')->name('setAddress');
 	Route::get('/home/product/buying/{id}/{qty}', 'ShoppingController@buy')->name('buy');
 	Route::get('/home/account/address', 'AccountController@Addresses')->name('addresses');
 	Route::post('/home/account/address', 'AccountController@myAddresses')->name('myAddresses');

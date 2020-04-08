@@ -35,7 +35,7 @@
                                         <h4>{{$address->career}} {{$address->streetNumber}} # {{$address->street}}</h4>
                                         <h6 class="text-muted">{{$address->additionalData}}</h6>
                                         @elseif(is_null($address))
-                                            <a href="{{route('addresses')}}" class="btn btn-link text-center float-left">Agregar nuevo domicilio</a>
+                                        <a href="{{route('addresses')}}" class="btn btn-link text-center float-left">Agregar nuevo domicilio</a>
                                         @endif
                                     </div>
                                     <div class="col-4 p-3">
@@ -56,12 +56,14 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         @foreach($addresses as $address)
-                                                        <div class="card mb-2">
-                                                            <div class="card-body">
-                                                                <h6>{{$address->career}} {{$address->streetNumber}} #{{$address->street}}</h6>
-                                                                <p class="text-muted">{{$address->additionalData}}</p>
+                                                        <a href="{{route('setAddress', ['id' => $address->id])}}">
+                                                            <div class="card mb-2">
+                                                                <div class="card-body">
+                                                                    <h6>{{$address->career}} {{$address->streetNumber}} #{{$address->street}}</h6>
+                                                                    <p class="text-muted">{{$address->additionalData}}</p>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        </a>
                                                         @endforeach
                                                     </div>
                                                     <div class="modal-footer">

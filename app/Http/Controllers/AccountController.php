@@ -86,6 +86,22 @@ class AccountController extends Controller
             'current' =>true
         ]);
 
-        return redirect()->route('products');
+        return redirect()->back();
+    }
+
+    public function setAddress($id)
+    {
+        $user_id = Auth::user()->id;
+        Address::where('user_id', $user_id)->update([
+            'current' => false
+        ]);
+
+        Address::where('user_id', $user_id)
+        ->where('id', $id)
+        ->update([
+            'current' => true
+        ]);
+
+         return redirect()->back();
     }
 }
