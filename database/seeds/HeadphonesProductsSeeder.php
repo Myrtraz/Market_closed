@@ -1,5 +1,6 @@
 <?php
 
+use App\Categories;
 use App\Sales;
 use Illuminate\Database\Seeder;
 
@@ -12,9 +13,14 @@ class HeadphonesProductsSeeder extends Seeder
      */
     public function run()
     {
+        $category = Categories::create([
+            'name' => 'Auriculares',
+            'icon' => 'fas fa-headphones'
+        ]);
+
     Sales::create([
         'user_id' =>1,
-        'category_id' =>3,
+        'category_id' =>$category->id,
         'title' => 'Xiaomi Redmi Airdots Manos Libres Bluetooth Originales',
     	'description' => 
     	'<pre>Características de los AirDots:
@@ -38,7 +44,7 @@ class HeadphonesProductsSeeder extends Seeder
 
     Sales::create([
         'user_id' =>1,
-        'category_id' =>3,
+        'category_id' =>$category->id,
         'title' => 'Auriculares bluetooth i12 TWS inalámbricos',
     	'description' => 
     	'<pre>Auriculares bluetooth i12 TWS inalámbricos de color blanco , rojo , verde , gris . Toque los auriculares de control.
@@ -73,7 +79,7 @@ El paquete incluye:
 
     Sales::create([
         'user_id' =>1,
-        'category_id' =>3,
+        'category_id' =>$category->id,
         'title' => 'Logitech G633 Artemis Spectrum, Diadema Gamer Rgb Sonido 7.1',
     	'description' => 
     	'<pre>Logitech G633 Artemis Spectrum, Diadema Gamer RGB / Sonido 7.1 Dolby
@@ -111,7 +117,7 @@ El paquete incluye:
 
     Sales::create([
         'user_id' =>1,
-        'category_id' =>3,
+        'category_id' =>$category->id,
         'title' => 'Audífonos Bluetooth Deportivos R1 Micrófono 5 Horas Potente',
     	'description' => 
     	'<pre>CARACTERÍSTICAS DEL PRODUCTO:
