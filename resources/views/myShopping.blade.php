@@ -23,7 +23,7 @@
                         <a href="#" class="btn btn-primary float-right">Volver a comprar</a>
                         <br>
                         <br>
-                        <a href="{{route('moreDetails')}}" class="float-right">Ver Detalles</a>
+                        <a href="{{route('moreDetails', $buy->id)}}" class="float-right">Ver Detalles</a>
                         <div class="row">
                             <div class="col-2">
                                 <img src="{{$buy->publication->cover}}" alt="" class="card-img-top">

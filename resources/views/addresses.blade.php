@@ -56,17 +56,20 @@ input[type=number] { -moz-appearance:textfield; }
 									<option value="Usaquén">Usaquén</option>
 								</select>
 							</div>
-							<div class="col-4">
+							<div class="col-3">
 								<select name="career" id="career" class="form-control">
 									<option value="0" disabled selected="">Dirección</option>
 									<option value="Carrera">Carrera</option>
 								</select>
 							</div>
-							<div class="col-4">
-								<input type="number" name="streetNumber" class="form-control" placeholder="N° de Calle">
+							<div class="col-3">
+								<input type="number" name="streetNumber" class="form-control" placeholder="N° Calle">
 							</div>
-							<div class="col-4 mb-2">
+							<div class="col-3 mb-2">
 								<input type="number" name="street" class="form-control" placeholder="Calle">
+							</div>
+							<div class="col-3 mb-2">
+								<input type="number" name="street2" class="form-control" placeholder="Calle">
 							</div>
 							<div class="col-12 mb-2">
 								<input type="text" name="additionalData" class="form-control" placeholder="Datos Adicionales (Opcional)">

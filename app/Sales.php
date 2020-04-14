@@ -13,6 +13,7 @@ class Sales extends Model
     	'description',
     	'prices',
     	'quantity',
+        'status',
     	'cover',
     	'cover1',
     	'cover2',

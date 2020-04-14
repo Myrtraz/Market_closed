@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function homeStart() {
         $categories = Categories::get();
-    	$products = Sales::whereIn('id', [1, 5, 6, 9, 13, 15, 17, 21])->get();
+    	$products = Sales::get();
     	
         return view('home', compact('products', 'categories'));
     }

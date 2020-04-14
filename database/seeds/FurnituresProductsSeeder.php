@@ -21,6 +21,7 @@ class FurnituresProductsSeeder extends Seeder
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status'=> 'Nuevo',
         'title' => 'Sala Pequeña Espalda Riñonera De 1.70',
     	'description' => 
     	'<pre>SALA RIÑONERA PEQUEÑA DE 1.70 X 1.70
@@ -40,6 +41,7 @@ La sala esta tapizada en tela tipo cuero fácil de limpiar, se puede fabricar en
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status'=> 'Nuevo',
         'title' => 'Biblioteca moduofi salvaje Café',
     	'description' => 
     	'<pre>- Medidas: Alto: 181cm x Ancho: 63cm x Profundidad: 24cm
@@ -59,6 +61,7 @@ La sala esta tapizada en tela tipo cuero fácil de limpiar, se puede fabricar en
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status'=> 'Nuevo',
         'title' => 'Juego Sala Puff : 2 Sillas + 1 Sofá + Obsequio - Nueva!',
     	'description' => 
     	'<pre>CARACTERÍSTICAS
@@ -85,6 +88,7 @@ MEDIDAS
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status'=> 'Nuevo',
         'title' => 'Escritorio Con Biblioteca Lacado Ref: Sevilla',
     	'description' => 
     	'<pre>PRODUCTO: Escritorio Ref: Sevilla

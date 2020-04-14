@@ -21,6 +21,7 @@ class VideoGamesProductsSeeder extends Seeder
     	Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status' =>'Nuevo',
         'title' => 'Nintendo New Snes 3ds Xl Super Nes Classic Consola Americana',
     	'description' => 
     	'<pre>Nintendo New Snes 3ds Xl Super Nes Consola De Juegos fue presentado y lanzado al mercado el 27 de noviembre del 2017. El nuevo sistema Nintendo 3DS XL combina juegos portátiles de última generación con tecnología 3D súper estable y funciones de control adicionales. Tome fotos en 3D, conéctese con amigos y mejore sus experiencias de juego con la ayuda adicional de amiibo. El nuevo sistema Nintendo 3DS XL reproduce todos los juegos de Nintendo DS. Los juegos de Nintendo DS no aparecerán en 3D. El adaptador de CA se vende por separado. La nueva Nintendo 3DS XL usa el mismo adaptador de CA que los sistemas Nintendo DSi, Nintendo 3DS y Nintendo 2DS. Modo 3D recomendado para mayores de 7 años Incluye código de descarga para Super Mario Kart (Super NES).
@@ -47,6 +48,7 @@ class VideoGamesProductsSeeder extends Seeder
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status' =>'Nuevo',
         'title' => 'Consola Ps4 Slim De 1tb +3 Juegos +plus 3 Meses',
     	'description' => 
     	'<pre>Consola Ps4 Slim De 1tb +3 Juegos GTA V Premium Edition, Horizon Zero, Days Gone +plus 3 Meses + Contenido Adicional para Fortnite
@@ -70,6 +72,7 @@ Descripción:
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status' =>'Nuevo',
         'title' => 'Nintendo Switch Neon 32gb Nueva Versión 2019 Envío Gratis',
     	'description' => 
     	'<pre>Disponible para entrega inmediata enviamos hoy a toda colombia</pre>',
@@ -84,6 +87,7 @@ Descripción:
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status' =>'Nuevo',
         'title' => 'Consola Xbox One X 4k 1tb Gears Of War 5 + Extra',
     	'description' => 
     	'<pre>--- PROMOCION CUOTAS SIN INTERES POR TIEMPO LIMITADO ---

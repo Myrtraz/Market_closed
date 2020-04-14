@@ -21,6 +21,7 @@ class PhonesProductsSeeder extends Seeder
         Sales::create([
         'user_id' =>1,
         'category_id' => $category->id,
+        'status' => 'Nuevo',
         'title' => 'Celular Samsung Galaxy A01 32 Gb Negro Dual Sim',
     	'description' => 
     	'<pre>	* Mantente siempre conectado con tu Galaxy A01
@@ -38,6 +39,7 @@ class PhonesProductsSeeder extends Seeder
         Sales::create([
         'user_id' =>1,
         'category_id' => $category->id,
+        'status' => 'Nuevo',
         'title' => 'Celular iPhone 11 64gb Sellado Nuevo 4g',
     	'description' => 
     	'<pre>	- Dimensiones 150.9 x 75.7 x 8.3 mm (5.94 x 2.98 x 0.33 in)
@@ -80,6 +82,7 @@ class PhonesProductsSeeder extends Seeder
         Sales::create([
         'user_id' =>1,
         'category_id' => $category->id,
+        'status' => 'Nuevo',
         'title' => 'Nexus 6 Xt1103 32 Gb 3G/4G Lte',
     	'description' => 
     	'<pre>Titulo:
@@ -114,6 +117,7 @@ Dimensiones:
         Sales::create([
         'user_id' =>1,
         'category_id' => $category->id,
+        'status' => 'Nuevo',
         'title' => 'Asus Zenfone 4 Max 5.2 /Dual Cam Flash Sim/ Huella 4200mah',
     	'description' => 
     	'<pre>Producto: Zenfone 4 Max 5.2" Negro Celular Libre de Asus

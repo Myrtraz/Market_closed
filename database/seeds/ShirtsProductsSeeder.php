@@ -21,6 +21,7 @@ class ShirtsProductsSeeder extends Seeder
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status' => 'Nuevo',
         'title' => 'Camiseta Esqueleto Mujer Totoro Anime',
     	'description' => 
         '<pre>Talla única, se ajusta a mujeres de talla S y M por su tela strech. Mide 60 cm de largo</pre>',
@@ -35,6 +36,7 @@ class ShirtsProductsSeeder extends Seeder
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status' => 'Nuevo',
         'title' => 'Camisetas Estampadas Mujer Dama Blusa Nasa Mujer Idk 2',
         'description' => 
         '<pre>• La tela de esta prenda es suave
@@ -55,6 +57,7 @@ class ShirtsProductsSeeder extends Seeder
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status' => 'Nuevo',
         'title' => 'Camiseta Soda Stereo Gracias Totales Rock Activity',
         'description' => 
         '<pre>Las fotos son reales no tienen ningún tipo de retoque para que la compra sea con confianza, viendo directamente de lo que usted va a recibir.
@@ -73,6 +76,7 @@ No se suministraran mas fotos a la plataforma de Mercadolibre, si desea puede ha
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status' => 'Nuevo',
         'title' => 'Camisetas Largas Con Capucha Urban Para Hombre',
         'description' => 
         '<pre>Camisetas Largas con capucha Urban

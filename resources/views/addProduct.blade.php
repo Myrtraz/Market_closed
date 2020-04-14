@@ -34,11 +34,10 @@ input[type=number] { -moz-appearance:textfield; }
         <form action="{{route('toSell')}}" method="post">
             @csrf
             <div class="row">
-                <div class="col-3">
+                <div class="col-3 py-4">
                     <input type="text" name="cover" class="form-control" placeholder="Url Images">
                 </div>
-                <div class="col-3"></div>
-                <div class="col-6 py-4">
+                <div class="col-9 py-4">
                     <input type="text" name="title" class="mb-2 form-control" placeholder="Titulo">
                     <div id="editor" class="mb-2" style="background: white;"></div>
                     <input type="hidden" name="description">
@@ -50,10 +49,18 @@ input[type=number] { -moz-appearance:textfield; }
                     <input type="number" name="prices" class="mb-2 form-control col-4 float-right" placeholder="Precio">
                     <div class="mb-3">
                         <select name="quantity" id="quantity" class="form-control col-2">
-                            @for($i = 1; $i <= 50; $i++)
+                            @for($i = 1; $i <= 100; $i++)
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
+                        <select name="status" id="status" class="form-control col-2">
+                            <option value="0" disabled="" selected="">Status del producto</option>
+                            <option value="Nuevo">Nuevo</option>
+                            <option value="Usado">Usado</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        
                     </div>
                     <button type="submit" class="btn btn-primary float-right">Agregar</button>
                 </div>

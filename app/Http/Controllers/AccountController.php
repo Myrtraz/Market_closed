@@ -69,6 +69,7 @@ class AccountController extends Controller
         $career = $request->career;
         $streetNumber = $request->streetNumber;
         $street = $request->street;
+        $street2 = $request->street2;
         $additionalData = $request->additionalData;
 
         Address::where('user_id', $user_id)->update([
@@ -82,6 +83,7 @@ class AccountController extends Controller
             'career' => $career,
             'streetNumber' => $streetNumber,
             'street' => $street,
+            'street2' => $street2,
             'additionalData' => $additionalData,
             'current' =>true
         ]);

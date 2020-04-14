@@ -28,6 +28,7 @@ class AddProduct extends FormRequest
             'description'=> 'required',
             'prices'=> 'required',
             'quantity'=> 'required',
+            'status'=> 'required',
             'cover'=> 'required',
             'cover1'=> 'string',
             'cover2'=> 'string',

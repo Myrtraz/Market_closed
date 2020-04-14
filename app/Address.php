@@ -13,6 +13,7 @@ class Address extends Model
 		'career',
 		'streetNumber',
 		'street',
+		'street2',
 		'additionalData',
 		'current',
     ];

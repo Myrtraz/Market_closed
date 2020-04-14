@@ -20,7 +20,8 @@ class SportsProductsSeeder extends Seeder
 
         Sales::create([
         'user_id' =>1,
-        'category_id' => $category->id,
+        'category_id' =>$category->id,
+        'status' =>'Usado',
         'title' => 'Bicicleta Roadmaster Jumper Doble Susp 29 Shimano21v Bloqueo',
     	'description' => 
     	'<pre>****LA NUEVA ROADMASTER JUMPER 29" MODELO 2020*** RoadMaster trae para ti Bicicleta Roadmaster Jumper Doble Susp RIN 29 Shimano21v.
@@ -59,6 +60,7 @@ class SportsProductsSeeder extends Seeder
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status' =>'Usado',
         'title' => 'Balon Baloncesto Basketball Molten Gg7x Cuero Original',
     	'description' => 
     	'<pre>BALON MOLTEN GG7X EN CUERO, INTERIOR Y EXTERIOR
@@ -91,6 +93,7 @@ Con el Balón Molten GG7X , demostrarás el talento del cual presumes a diario. 
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status' =>'Usado',
         'title' => 'Opro Platinum Level - Protector Bucal Para Rugby, Hockey',
     	'description' => 
     	'<pre>SOMOS AKAESCOLOMBIA SAS, TODOS NUESTROS PRODUCTOS SON IMPORTADOS Y EL TIEMPO DE ENTREGA ES DE 9 A 11 DÍAS HÁBILES.</pre>',
@@ -105,6 +108,7 @@ Con el Balón Molten GG7X , demostrarás el talento del cual presumes a diario. 
         Sales::create([
         'user_id' =>1,
         'category_id' =>$category->id,
+        'status' =>'Usado',
         'title' => 'Balon Futbol Mikasa Original Clasico Ft-5',
     	'description' => 
     	'<pre>Balon Futbol tamaño numero 5 Original Mikasa

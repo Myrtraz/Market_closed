@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCategoryIdToSalesTable extends Migration
+class CreateShipping extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class AddCategoryIdToSalesTable extends Migration
      */
     public function up()
     {
-        Schema::table('sales', function (Blueprint $table) {
-             $table->integer('category_id')->after('user_id');
-             $table->string('status');
+        Schema::create('shipping', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('type');
+            $table->string('img');
+            $table->string('icon');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +30,6 @@ class AddCategoryIdToSalesTable extends Migration
      */
     public function down()
     {
-        Schema::table('sales', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('shipping');
     }
 }

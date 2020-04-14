@@ -41,6 +41,7 @@ class SalesController extends Controller
         $category_id = $request->category_id;
         $prices = $request->prices;
         $quantity = $request->quantity;
+        $status = $request->status;
         $cover = $request->cover;
 
 
@@ -51,6 +52,7 @@ class SalesController extends Controller
             'category_id' => $category_id,
             'prices' => $prices,
             'quantity' => $quantity,
+            'status' => $status,
             'cover' => $cover,
         ]);
 

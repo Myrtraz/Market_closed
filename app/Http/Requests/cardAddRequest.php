@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddressRequest extends FormRequest
+class cardAddRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,12 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullName' => 'required',
-            'state' => 'required',
-            'city' => 'required',
-            'career' => 'required',
-            'streetNumber' => 'required',
-            'street' => 'required',
-            'street2' => 'required',
-            'additionalData' => 'string',
-            'phone' => 'required',
+            'cardName' => 'required',
+            'creditCard' => 'required|min:16|max:16',
+            'type' => 'required',
+            'cvv' => 'required|min:3|max:3',
+            'exp' => 'required',
+            'exp2' => 'required',
         ];
     }
 }
