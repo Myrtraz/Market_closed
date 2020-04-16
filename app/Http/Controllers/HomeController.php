@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Categories;
 use App\Sales;
+use Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function homeStart() {
+        $user = Auth::user();
         $categories = Categories::get();
     	$products = Sales::get();
     	
-        return view('home', compact('products', 'categories'));
+        return view('home', compact('products', 'categories', 'user'));
     }
 
     public function categories($id) {

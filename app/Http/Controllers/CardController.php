@@ -37,7 +37,12 @@ class CardController extends Controller
             'exp2' => $exp2,
             'current' =>true
         ]);
-        return redirect()->back();
+
+        $id = $request->id;
+        $qty = $request->qty;
+
+        return redirect()->to(route('creditCard', [ 'id'=> $request->id, 'qty' => $request->qty ]));
+        //return redirect()->;
     }
 
     	public function setCard($id) {
@@ -51,7 +56,12 @@ class CardController extends Controller
         ->update([
             'current' => true
         ]);
-
+        
          return redirect()->back();
+    }
+
+    public function secretCode()
+    {
+        return view('cvvCode');
     }
 }

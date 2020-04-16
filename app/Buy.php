@@ -11,6 +11,9 @@ class Buy extends Model
         'address_id',
 		'seller_id',
 		'publish_id',
+        'payment_method_id',
+        'shipping_id',
+        'creditCard_id',
 		'status',
 		'quantity',
 		'total'
@@ -34,5 +37,10 @@ class Buy extends Model
     public function address()
     {
         return $this->belongsTo('App\Address', 'address_id');
+    }
+
+    public function payment_method()
+    {
+        return $this->belongsTo('App\Payment', 'payment_method_id');
     }
 }

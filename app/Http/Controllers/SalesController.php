@@ -29,11 +29,6 @@ class SalesController extends Controller
     	return view('addProduct', compact('categories'));
     }
 
-    public function resume(Request $request)
-    {
-        return redirect()->route('buy', $request->only('id', 'qty'));
-    }
-
     public function toSell(AddProduct $request){
         $user_id = Auth::user()->id;
     	$title = $request->title;

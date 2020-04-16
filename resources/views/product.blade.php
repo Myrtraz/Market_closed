@@ -59,8 +59,8 @@
                         <br>
                         <span class="text-muted" style="font-size: 12px;">Solo en zonas de Bogotá</span>
                     </p>
-                    <form action="{{route('resumen.buy')}}" method="post">
-                        @csrf
+                    <form action="{{route('buy')}}" method="get">
+                        
                         <div>
                             <p>Cantidad</p>
                             <select name="qty" id="quantity" class="form-control">

@@ -7,6 +7,7 @@ use App\Addresses;
 use App\Buy;
 use App\Card;
 use App\Http\Requests\BuyRequest;
+use App\Payment;
 use App\Sales;
 use Auth;
 use Illuminate\Http\Request;
@@ -20,16 +21,18 @@ class ShoppingController extends Controller
     	return view('myShopping',compact('shoppings'));
     }
 
-    public function buy($id, $qty) {
+    public function buy(Request $request) {
         $user = Auth::user();
 
-        $buy = Sales::find($id);
+        $buy = Sales::find($request->id);
 
         $address = Address::where('user_id',$user->id)
             ->where('current', true)
             ->first();
 
         $addresses = Address::where('user_id',$user->id)->get();
+        $qty = $request->qty;
+        $id = $request->id;
 
     	return view('buy', compact('buy', 'user', 'qty', 'id', 'address','addresses'));
     }
@@ -68,19 +71,34 @@ class ShoppingController extends Controller
         return redirect()->route('creditCard');
     }
 
-    public function creditCard($id, $qty)
+    public function creditCard(Request $request)
     {
         $user = Auth::user();
 
-        $buy = Sales::find($id);
+        $buy = Sales::find($request->id);
+        $cc = Payment::get()->first();
 
         $card = Card::where('user_id',$user->id)
             ->where('current', true)
             ->first();
 
         $cards = Card::where('user_id',$user->id)->get();
+        $qty = $request->qty;
+        $id = $request->id;
+        $payment = $request->payment;
+
+        if (! is_null($payment)) {
+            if ($payment == 'cc') {
+                return redirect()->to(route('cvvCode'));
+            } elseif($payment == 'add_cc') {
+                return view('cardAdd');
+            } else {
+                return view('thanks');
+            }
+        }
+
         
-        return view('creditCard', compact('buy', 'user', 'qty', 'id', 'card','cards'));
+        return view('creditCard', compact('buy', 'user', 'qty', 'id', 'card','cards', 'cc'));
     }
 
     public function dues()
