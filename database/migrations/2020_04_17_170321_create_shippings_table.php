@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShipping extends Migration
+class CreateShippingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateShipping extends Migration
      */
     public function up()
     {
-        Schema::create('shipping', function (Blueprint $table) {
+        Schema::create('shippings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('type');
@@ -30,6 +30,6 @@ class CreateShipping extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shipping');
+        Schema::dropIfExists('shippings');
     }
 }

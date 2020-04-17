@@ -9,6 +9,7 @@ use App\Card;
 use App\Http\Requests\BuyRequest;
 use App\Payment;
 use App\Sales;
+use App\Shipping;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -31,10 +32,13 @@ class ShoppingController extends Controller
             ->first();
 
         $addresses = Address::where('user_id',$user->id)->get();
+        $shipping_methods = Shipping::get();
+
         $qty = $request->qty;
         $id = $request->id;
+        $sm = $request->sm;
 
-    	return view('buy', compact('buy', 'user', 'qty', 'id', 'address','addresses'));
+    	return view('buy', compact('buy', 'user', 'qty', 'id', 'address','addresses', 'shipping_methods', 'sm'));
     }
 
     public function toBuy(BuyRequest $request) {
@@ -45,10 +49,13 @@ class ShoppingController extends Controller
     }
 
     public function makeSale(Request $request) {
-        return redirect()->route('creditCard', [ 'id'=> $request->id, 'qty' => $request->qty ]);
-        
+        return redirect()->route('creditCard', [ 'id'=> $request->id, 'qty' => $request->qty, 'sm'=> $request->sm, ]);
+    }
+
+    public function makeOrder(Request $request) {        
         $request->id;
         $request->qty;
+        $request->sm;
         $user = Auth::user();
 
         $buyerId = Auth::user()->id;
@@ -59,6 +66,8 @@ class ShoppingController extends Controller
             ->first();
 
         Buy::create([
+            'payment_method_id'=>$request->payment,
+            'shipping_id' =>$request->sm,
             'buyer_id' => $buyerId,
             'seller_id' => $publication->user_id,
             'publish_id' => $publication->id,
@@ -68,7 +77,7 @@ class ShoppingController extends Controller
             'total' => $request->qty * $publication->prices
         ]);
 
-        return redirect()->route('creditCard');
+        return view('thanks');
     }
 
     public function creditCard(Request $request)
@@ -85,20 +94,22 @@ class ShoppingController extends Controller
         $cards = Card::where('user_id',$user->id)->get();
         $qty = $request->qty;
         $id = $request->id;
+        $sm = $request->sm;
         $payment = $request->payment;
 
         if (! is_null($payment)) {
             if ($payment == 'cc') {
-                return redirect()->to(route('cvvCode'));
+                return redirect()->to(route('id', 'qty','dues','payment', 'sm'));
             } elseif($payment == 'add_cc') {
-                return view('cardAdd');
+                $qty = $request->qty;
+                $id = $request->id;
+                return redirect()->route('cardAdd', compact('id', 'qty', 'sm'));
             } else {
-                return view('thanks');
+               return redirect()->route('makeOrder', compact('id', 'qty','payment', 'sm'));
             }
         }
-
         
-        return view('creditCard', compact('buy', 'user', 'qty', 'id', 'card','cards', 'cc'));
+        return view('creditCard', compact('buy', 'user', 'qty', 'id', 'card','cards', 'cc','sm'));
     }
 
     public function dues()

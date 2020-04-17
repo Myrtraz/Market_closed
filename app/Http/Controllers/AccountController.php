@@ -56,12 +56,14 @@ class AccountController extends Controller
 
 
 
-    public function Addresses() {
+    public function Addresses(Request $request) {
         $user = Auth::user();
-        return view('addresses', compact('user'));
+        $id = $request->id;
+        $qty = $request->qty;
+        return view('addresses', compact('user', 'id', 'qty'));
     }
 
-    public function myAddresses(AddressRequest $request)
+    public function myAddresses(Request $request)
     {
         $user_id = Auth::user()->id;
         $state = $request->state;
@@ -88,7 +90,10 @@ class AccountController extends Controller
             'current' =>true
         ]);
 
-        return redirect()->back();
+        $id = $request->id;
+        $qty = $request->qty;
+
+        return redirect()->route('buy', compact('id', 'qty'));
     }
 
     public function setAddress($id)

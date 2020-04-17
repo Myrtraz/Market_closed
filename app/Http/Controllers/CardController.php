@@ -9,9 +9,12 @@ use Illuminate\Http\Request;
 
 class CardController extends Controller
 {
-    public function cardAdd()
+    public function cardAdd(Request $request)
     {
-    	return view('cardAdd');
+        $id = $request->id;
+        $qty = $request->qty;
+        $sm = $request->sm;
+    	return view('cardAdd' ,compact('id', 'qty', 'sm'));
     }
 
     public function cardAddPost(cardAddRequest $request) {
@@ -40,9 +43,9 @@ class CardController extends Controller
 
         $id = $request->id;
         $qty = $request->qty;
+        $sm = $request->sm;
 
-        return redirect()->to(route('creditCard', [ 'id'=> $request->id, 'qty' => $request->qty ]));
-        //return redirect()->;
+        return redirect()->route('creditCard', compact('id', 'qty', 'sm'));
     }
 
     	public function setCard($id) {

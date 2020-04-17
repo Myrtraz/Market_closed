@@ -48,8 +48,9 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-5">
-								<input type="number" class="form-control mb-3 col-3" name="cvv" placeholder="cvv">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt aliquam hic quo cumque enim, sed corporis. Quisquam quidem fugiat, ratione excepturi inventore aut quis qui beatae neque libero, ea, eveniet.</p>
+								<p>Codigó de seguridad</p>
+								<input type="number" class="form-control mb-3 col-4" name="cvv" placeholder="cvv">
+								<small class="text-muted">Ultimos 3 digitos en el dorso de tu tarjeta</small>
 							</div>
 							<div class="col-1"></div>
 

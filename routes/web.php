@@ -47,7 +47,8 @@ Route::group(['middleware' =>'auth'], function() {
 		Route::post('/home/product/sale', 'ShoppingController@makeSale')->name('make.sale');
 		Route::get('credit/set/{id}','CardController@setCard')->name('setCard');
 		Route::get('/home/product/summary/payment', 'ShoppingController@creditCard')->name('creditCard');
-		Route::post('/home/product/summary/payment', 'ShoppingController@creditCard')->name('creditCard.post');
+		Route::post('/home/product/summary/payment', 'ShoppingController@creditCard')->name('creditCardPost');
+		Route::get('/order/make', 'ShoppingController@makeOrder')->name('makeOrder');
 		Route::get('/home/product/summary/payment/cvv', 'CardController@secretCode')->name('cvvCode');
 		Route::get('/home/product/sales/credit/dues', 'ShoppingController@dues')->name('dues');
 		Route::get('/home/product/sale/finish', 'ShoppingController@thankForBuying')->name('thanks');

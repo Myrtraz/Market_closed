@@ -36,7 +36,7 @@ input[type=number] { -moz-appearance:textfield; }
             <div class="col-8">
                 <h3 class="text-center font-italic">Añada los datos correspondiente para registrar su tarjeta</h3>
                 <div class="card">
-                    <form action="{{route('cardAddPost')}}" method="post">
+                    <form action="{{route('cardAddPost', compact('id', 'qty', 'sm'))}}" method="post">
                     	@csrf
                         <div class="card-body">
                             <div class="row">

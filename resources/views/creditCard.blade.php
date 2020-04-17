@@ -29,6 +29,9 @@
                         @foreach($errors->all() as $error)
                         <li>{{$error}}</li>
                         @endforeach
+                        @if(is_null($payment))
+                            <li>Error</li>
+                        @endif
                     </ul>
                 </div>
                 @endif
@@ -40,7 +43,7 @@
     <div class="container">
         <div class="row">
             <div class="col-8">
-                <form action="{{route('creditCard.post')}}" method="post">
+                <form action="{{route('creditCardPost', compact('id', 'qty', 'sm'))}}" method="post">
                     <h3 class="font-weight-light mb-3 font-italic">¿Cómo quieres pagar?</h3>
                     <a href="{{route('dues')}}">dues</a>
                     <div class="">
@@ -65,7 +68,7 @@
                                     </div>
                                     @elseif(is_null($card))
                                     <div class="text-center">
-                                        <a href="{{route('cardAdd')}}" class="btn btn-link">Agregar nueva tarjeta</a>
+                                        <a href="{{route('cardAdd', compact('id', 'qty', 'sm'))}}" class="btn btn-link">Agregar nueva tarjeta</a>
                                     </div>
                                     @endif
                                 </div>
@@ -171,7 +174,7 @@
                     @endforeach
                 </div>
                 <div class="modal-footer">
-                    <a href="{{route('cardAdd')}}" class="btn btn-link float-left">Agregar nueva tarjeta</a>
+                    <a href="{{route('cardAdd', compact('id', 'qty', 'sm'))}}" class="btn btn-link float-left">Agregar nueva tarjeta</a>
                 </div>
             </div>
         </div>

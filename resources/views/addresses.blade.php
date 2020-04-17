@@ -37,7 +37,7 @@ input[type=number] { -moz-appearance:textfield; }
 				<h1 class="">¿Dónde quieres recibirlo?</h1>
 				<div class="card mb-5">
 					<div class="card-body">
-						<form action="{{route('myAddresses')}}" method="post">
+						<form action="{{route('myAddresses', compact('id', 'qty'))}}" method="post">
 							@csrf
 						<div class="row">
 								<div class="col-12 mb-2">

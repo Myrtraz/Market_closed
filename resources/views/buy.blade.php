@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col-8">
-                <form action="{{ route('make.sale') }}" method="post">
+                <form action="{{route('make.sale', compact('id', 'qty', 'sm'))}}" method="post">
                     @csrf
                     <input type="hidden" name="id" value="{{ $id }}">
                     <input type="hidden" name="qty" value="{{ $qty }}">
@@ -67,7 +67,7 @@
                                                         @endforeach
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <a href="{{route('addresses')}}" class="btn btn-link float-left">Agregar nuevo domicilio</a>
+                                                        <a href="{{route('addresses', compact('id', 'qty', 'sm'))}}" class="btn btn-link float-left">Agregar nuevo domicilio</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -77,21 +77,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mb-5">
+                    <?php $first = true;?>
+                    @foreach($shipping_methods as $shipping_method)
+                    <div class="card mb-2">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
                                     <div class="h1">
-                                        <input type="radio" aria-label="Radio button for following text input">
-                                    </div>
+                                        <input type="radio" name="sm" aria-label="Radio button for following text input" {{$first ? 'checked=""':''}} value="{{$shipping_method->id}}">
+                                    </div> 
                                 </div>
                                 <div class="col-7">
-                                    <h4>Normal a Domicilio</h4>
+                                    <h4>{{$shipping_method->name}}</h4>
                                     <h6 class="text-muted">Puede llegar x a x dias</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php $first = false;?>
+                    @endforeach
                     <button type="submit" class="btn btn-primary float-right">Continuar</button>
                 </form>
             </div>
