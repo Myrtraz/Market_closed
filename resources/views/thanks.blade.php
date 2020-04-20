@@ -1,5 +1,5 @@
 @extends('Layouts.form')
-@section('title','Añadir Producto')
+@section('title','Gracias! :D')
 @section('background', '#EAECEE')
 @section('content')
 <section class="py-3">

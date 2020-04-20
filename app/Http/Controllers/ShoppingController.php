@@ -22,6 +22,11 @@ class ShoppingController extends Controller
     	return view('myShopping',compact('shoppings'));
     }
 
+    public function moreDetails($id) {
+        $buy = Buy::find($id);   
+        return view('details', compact('buy'));
+    }
+
     public function buy(Request $request) {
         $user = Auth::user();
 
@@ -80,52 +85,9 @@ class ShoppingController extends Controller
         return view('thanks');
     }
 
-    public function creditCard(Request $request)
-    {
-        $user = Auth::user();
-
-        $buy = Sales::find($request->id);
-        $cc = Payment::get()->first();
-
-        $card = Card::where('user_id',$user->id)
-            ->where('current', true)
-            ->first();
-
-        $cards = Card::where('user_id',$user->id)->get();
-        $qty = $request->qty;
-        $id = $request->id;
-        $sm = $request->sm;
-        $payment = $request->payment;
-
-        if (! is_null($payment)) {
-            if ($payment == 'cc') {
-                return redirect()->to(route('id', 'qty','dues','payment', 'sm'));
-            } elseif($payment == 'add_cc') {
-                $qty = $request->qty;
-                $id = $request->id;
-                return redirect()->route('cardAdd', compact('id', 'qty', 'sm'));
-            } else {
-               return redirect()->route('makeOrder', compact('id', 'qty','payment', 'sm'));
-            }
-        }
-        
-        return view('creditCard', compact('buy', 'user', 'qty', 'id', 'card','cards', 'cc','sm'));
-    }
-
-    public function dues()
-    {
-        return view('dues');
-    }
-
     public function thankForBuying()
     {
         return view('thanks');
     }
 
-        public function moreDetails($id) {
-        //$user_id = Auth::user()->id;
-        $buy = Buy::find($id);
-        
-        return view('details', compact('buy'));
-    }
 }

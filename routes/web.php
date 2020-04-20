@@ -46,12 +46,14 @@ Route::group(['middleware' =>'auth'], function() {
 		Route::post('/home/product/sales', 'ShoppingController@toBuy')->name('toBuy');
 		Route::post('/home/product/sale', 'ShoppingController@makeSale')->name('make.sale');
 		Route::get('credit/set/{id}','CardController@setCard')->name('setCard');
-		Route::get('/home/product/summary/payment', 'ShoppingController@creditCard')->name('creditCard');
-		Route::post('/home/product/summary/payment', 'ShoppingController@creditCard')->name('creditCardPost');
+		Route::get('/home/product/summary/payment', 'CardController@creditCard')->name('creditCard');
+		Route::post('/home/product/summary/payment', 'CardController@creditCard')->name('creditCardPost');
 		Route::get('/order/make', 'ShoppingController@makeOrder')->name('makeOrder');
-		Route::get('/home/product/summary/payment/cvv', 'CardController@secretCode')->name('cvvCode');
-		Route::get('/home/product/sales/credit/dues', 'ShoppingController@dues')->name('dues');
-		Route::get('/home/product/sale/finish', 'ShoppingController@thankForBuying')->name('thanks');
+		Route::get('payment/dues', 'CardController@dues')->name('dues');
+		Route::post('payment/dues', 'CardController@duesPost')->name('dues.post');
+		Route::get('payment/cvv', 'CardController@secretCode')->name('cvvCode');
+		Route::post('payment/cvv', 'CardController@makeOrderCC')->name('makeOrderCC');
+		Route::get('payment/finish', 'ShoppingController@thankForBuying')->name('thanks');
 	});
 
 	Route::group([], function (){

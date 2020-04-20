@@ -45,7 +45,6 @@
             <div class="col-8">
                 <form action="{{route('creditCardPost', compact('id', 'qty', 'sm'))}}" method="post">
                     <h3 class="font-weight-light mb-3 font-italic">¿Cómo quieres pagar?</h3>
-                    <a href="{{route('dues')}}">dues</a>
                     <div class="">
                         <h4>Medio sugerido</h4>
                         <div class="card mb-5">

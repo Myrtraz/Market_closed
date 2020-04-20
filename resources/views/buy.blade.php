@@ -11,6 +11,11 @@
 }
 
         input[type=number] { -moz-appearance:textfield; }
+
+    input.larger {
+      width: 25px;
+      height: 25px;
+      }
 </style>
 </section>
 <section class="py-4">
@@ -84,7 +89,7 @@
                             <div class="row">
                                 <div class="col-3">
                                     <div class="h1">
-                                        <input type="radio" name="sm" aria-label="Radio button for following text input" {{$first ? 'checked=""':''}} value="{{$shipping_method->id}}">
+                                        <input type="radio" class="larger" name="sm" aria-label="Radio button for following text input" {{$first ? 'checked=""':''}} value="{{$shipping_method->id}}">
                                     </div> 
                                 </div>
                                 <div class="col-7">

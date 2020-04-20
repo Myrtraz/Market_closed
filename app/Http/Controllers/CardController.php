@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
+use App\Buy;
 use App\Card;
 use App\Http\Requests\cardAddRequest;
+use App\Payment;
+use App\Purchases;
+use App\Sales;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -63,8 +68,171 @@ class CardController extends Controller
          return redirect()->back();
     }
 
-    public function secretCode()
+    public function creditCard(Request $request)
     {
-        return view('cvvCode');
+        $user = Auth::user();
+
+        $buy = Sales::find($request->id);
+        $cc = Payment::get()->first();
+
+        $card = Card::where('user_id',$user->id)
+            ->where('current', true)
+            ->first();
+
+        $cards = Card::where('user_id',$user->id)->get();
+        $qty = $request->qty;
+        $id = $request->id;
+        $sm = $request->sm;
+        $payment = $request->payment;
+
+        if (! is_null($payment)) {
+            if ($payment == 'cc') {
+                return redirect()->route('dues', compact('id', 'qty','payment', 'sm'));
+            } elseif($payment == 'add_cc') {
+                $qty = $request->qty;
+                $id = $request->id;
+                $sm = $request->sm;
+                return redirect()->route('cardAdd', compact('id', 'qty', 'sm'));
+            } else {
+               return redirect()->route('makeOrder', compact('id', 'qty','payment', 'sm'));
+            }
+        }
+        
+        return view('creditCard', compact('buy', 'user', 'qty', 'id', 'card','cards', 'cc','sm'));
+    }
+
+    public function dues(Request $request)
+    {
+        $duesqty = $request->duesqty;
+        $qty = $request->qty;
+        $id = $request->id;
+        $sm = $request->sm;
+        $payment = $request->payment;
+
+        $user = Auth::user();
+        $buy = Sales::find($request->id);
+        $card = Card::where('user_id',$user->id)
+            ->where('current', true)
+            ->first();        
+        return view('dues', compact('user','duesqty','buy','card','id','qty', 'sm', 'payment'));
+    }
+
+    public function duesPost(Request $request)
+    {
+        $user = Auth::user();
+        $buy = Sales::find($request->id);
+        $card = Card::where('user_id',$user->id)
+            ->where('current', true)
+            ->first();
+
+        $duesqty = $request->duesqty;
+        $qty = $request->qty;
+        $id = $request->id;
+        $payment = $request->payment;
+        $sm = $request->sm;
+        
+
+        if (is_null($duesqty)) {
+            return redirect()->back();
+        }
+
+       /*
+        $purchases = Purchases::create([
+            'user_id' => $user,
+            'buy_id' => 66,
+            'card_id' => $card,
+            'duesQty' => $duesqty,
+            'amount' => $buy->prices*$qty,
+        ]);
+       */
+
+       //return redirect()->route('cvvCode', compact('id', 'qty','sm', 'duesqty', 'payment'));
+        return redirect()->route('cvvCode', [ 'id'=> $request->id, 'qty' => $request->qty, 'sm'=> $request->sm, 'payment' =>$request->payment, 'duesqty'=> $request->duesqty, ]);
+    }
+
+    public function secretCode(Request $request)
+    {
+        $user = Auth::user();
+        $qty = $request->qty;
+        $id = $request->id;
+        $payment = $request->payment;
+        $sm = $request->sm;
+        $duesqty = $request->duesqty;
+        $cvv = $request->cvv;
+
+        /*
+            if (! is_null($cvv)) {
+            $currentCard =Card::where('user_id',$user->id)
+                ->where('current', true)
+                ->where('cvv', $cvv)
+                ->first();
+
+            if (! is_null($currentCard)) {
+                return redirect()->route('thanks', [ 'id'=> $request->id, 'qty' => $request->qty, 'sm'=> $request->sm, 'payment' =>$request->payment, 'duesqty'=> $request->duesqty]);
+            } else {
+                return redirect()->back()->with('Codigo del reverso de su tarjeta es *INCORRECTO*, por favor, vuelva a reintentarlo');
+            }
+        }
+        */
+
+        return view('cvvCode', compact('id', 'qty','sm','payment', 'duesqty', 'cvv'));
+    }
+
+    public function makeOrderCC(Request $request) {
+        $qty = $request->qty;
+        $id = $request->id;
+        $payment = $request->payment;
+        $sm = $request->sm;
+        $duesqty = $request->duesqty;
+        $cvv = $request->cvv;
+
+        $user = Auth::user();
+        $buyerId = Auth::user()->id;
+        $publication = Sales::find($request->id);
+        $address = Address::where('user_id',$user->id)
+            ->where('current', true)
+            ->first();
+
+        $card = Card::where('user_id',$user->id)
+            ->where('current', true)
+            ->first();
+
+        if (! is_null($cvv)) {
+            $currentCard = Card::where('user_id',$user->id)
+                ->where('current', true)
+                ->where('cvv', $cvv)
+                ->first();
+
+            if (! is_null($currentCard)) {
+                $makeOrderCC = Buy::create([
+                    'payment_method_id'=>$request->payment,
+                    'shipping_id' =>$request->sm,
+                    'buyer_id' => $buyerId,
+                    'seller_id' => $publication->user_id,
+                    'publish_id' => $publication->id,
+                    'address_id' => $address->id,
+                    'status' => 'create',
+                    'quantity' => $request->qty,
+                    'total' => $request->qty * $publication->prices
+                ]);
+
+                $purchase = Purchases::create([
+                    'user_id' =>$user->id,
+                    'buy_id' =>$makeOrderCC->id,
+                    'card_id' =>$card->id,
+                    'duesQty' => $duesqty,
+                    'amount' => $request->qty * $publication->prices,
+                ]);
+
+                $UpdatePurchases = Buy::where([
+                    'id' => $id
+                ])
+                ->update(['purchase_id' => $purchase->id]);
+
+                return redirect()->route('thanks', [ 'id'=> $request->id, 'qty' => $request->qty, 'sm'=> $request->sm, 'payment' =>$request->payment, 'duesqty'=> $request->duesqty]);
+            } else {
+                return redirect()->back()->with('Codigo del reverso de su tarjeta es *INCORRECTO*, por favor, vuelva a reintentarlo');
+            }
+        }
     }
 }
