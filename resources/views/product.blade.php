@@ -42,6 +42,7 @@
                     <input type="button" value="Zoom" class="btn btn-secondary" onclick="zoom();">
                 </div>
                 <div class="col-3 m-4">
+                    <small class="text-muted">{{$product->status}} - {{$buySum}} </small>
                     <h3>{{$product->title}}</h3>
                     <div class="">
                         <span><i class="fas fa-star"></i></span>

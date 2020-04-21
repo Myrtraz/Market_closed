@@ -33,8 +33,7 @@
                                             <i class="fas fa-credit-card h1 py-2"></i>
                                         </div>
                                         <div class="col-8 py-3 mx-2">
-                                            <h4>Banco BBVA **** 2342</h4>
-                                            <h4>{{$card->type}} - {{$card->creditCard}}</h4>
+                                            <h4>{{$card->type}} - {{$cardHash}}</h4>
                                         </div>
                                     </div>
                                 </div>

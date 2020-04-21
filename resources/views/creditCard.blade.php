@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="col-5">
                                         <h4>Banco <span class="h5 font-weight-bold">{{$card->type}}</span></h4>
-                                        <h6 class="font-weight-bold">{{$card->creditCard}}</h6>
+                                        <h6 class="font-weight-bold">{{$cardHash}}</h6>
                                     </div>
                                     <div class="col-3 py-2">
                                         <button type="button" class="btn btn-link float-right" data-toggle="modal" data-target="#exampleModal">

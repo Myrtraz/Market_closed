@@ -79,6 +79,13 @@ class CardController extends Controller
             ->where('current', true)
             ->first();
 
+        $cardHash = '';
+        if (! is_null($card)) {
+            $cardHash .= $card->creditCard;
+            $cardHash = str_repeat('*', 12) . substr($cardHash, -4);
+        }
+
+
         $cards = Card::where('user_id',$user->id)->get();
         $qty = $request->qty;
         $id = $request->id;
@@ -98,7 +105,7 @@ class CardController extends Controller
             }
         }
         
-        return view('creditCard', compact('buy', 'user', 'qty', 'id', 'card','cards', 'cc','sm'));
+        return view('creditCard', compact('buy', 'user', 'qty', 'id','cardHash', 'card','cards', 'cc','sm'));
     }
 
     public function dues(Request $request)
@@ -113,8 +120,15 @@ class CardController extends Controller
         $buy = Sales::find($request->id);
         $card = Card::where('user_id',$user->id)
             ->where('current', true)
-            ->first();        
-        return view('dues', compact('user','duesqty','buy','card','id','qty', 'sm', 'payment'));
+            ->first();  
+
+            $cardHash = '';
+        if (! is_null($card)) {
+            $cardHash .= $card->creditCard;
+            $cardHash = str_repeat('*', 12) . substr($cardHash, -4);
+        }
+
+        return view('dues', compact('user','duesqty','buy','card','cardHash','id','qty', 'sm', 'payment'));
     }
 
     public function duesPost(Request $request)
@@ -136,17 +150,6 @@ class CardController extends Controller
             return redirect()->back();
         }
 
-       /*
-        $purchases = Purchases::create([
-            'user_id' => $user,
-            'buy_id' => 66,
-            'card_id' => $card,
-            'duesQty' => $duesqty,
-            'amount' => $buy->prices*$qty,
-        ]);
-       */
-
-       //return redirect()->route('cvvCode', compact('id', 'qty','sm', 'duesqty', 'payment'));
         return redirect()->route('cvvCode', [ 'id'=> $request->id, 'qty' => $request->qty, 'sm'=> $request->sm, 'payment' =>$request->payment, 'duesqty'=> $request->duesqty, ]);
     }
 
@@ -159,21 +162,6 @@ class CardController extends Controller
         $sm = $request->sm;
         $duesqty = $request->duesqty;
         $cvv = $request->cvv;
-
-        /*
-            if (! is_null($cvv)) {
-            $currentCard =Card::where('user_id',$user->id)
-                ->where('current', true)
-                ->where('cvv', $cvv)
-                ->first();
-
-            if (! is_null($currentCard)) {
-                return redirect()->route('thanks', [ 'id'=> $request->id, 'qty' => $request->qty, 'sm'=> $request->sm, 'payment' =>$request->payment, 'duesqty'=> $request->duesqty]);
-            } else {
-                return redirect()->back()->with('Codigo del reverso de su tarjeta es *INCORRECTO*, por favor, vuelva a reintentarlo');
-            }
-        }
-        */
 
         return view('cvvCode', compact('id', 'qty','sm','payment', 'duesqty', 'cvv'));
     }
@@ -225,9 +213,16 @@ class CardController extends Controller
                 ]);
 
                 $UpdatePurchases = Buy::where([
-                    'id' => $id
+                    'id' => $makeOrderCC->id
                 ])
                 ->update(['purchase_id' => $purchase->id]);
+
+                $updateSales = Sales::where([
+                    'id' => $id
+                ])
+                ->update(['quantity' => $publication->quantity - $qty]);
+
+                //$summation = Buy::where('publish_id' => $publication->id)->sum('quantity');
 
                 return redirect()->route('thanks', [ 'id'=> $request->id, 'qty' => $request->qty, 'sm'=> $request->sm, 'payment' =>$request->payment, 'duesqty'=> $request->duesqty]);
             } else {

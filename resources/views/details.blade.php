@@ -35,7 +35,11 @@
                                 <span class="rounded-circle h1"><i class="fas fa-credit-card"></i></span>
                             </div>
                             <div class="col-5">
-                                <h4>Tarjeta de credito</h4>
+                                @if(! is_null($buy->purchases))
+                                <h5>{{$buy->purchases->cards->creditCard}}</h5>
+                                @else
+                                <h5>{{$buy->payment_method_id}}</h5>
+                                @endif 
                                 <p>Pago ($ {{$buy->total}})</p>
                             </div>
                         </div>

@@ -13,7 +13,7 @@ class Buy extends Model
 		'publish_id',
         'payment_method_id',
         'shipping_id',
-        'creditCard_id',
+        'purchase_id',
 		'status',
 		'quantity',
 		'total'
@@ -42,5 +42,10 @@ class Buy extends Model
     public function payment_method()
     {
         return $this->belongsTo('App\Payment', 'payment_method_id');
+    }
+
+    public function purchases()
+    {
+        return $this->belongsTo('App\Purchases', 'purchase_id');
     }
 }

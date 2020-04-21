@@ -8,6 +8,7 @@ use App\Buy;
 use App\Card;
 use App\Http\Requests\BuyRequest;
 use App\Payment;
+use App\Purchases;
 use App\Sales;
 use App\Shipping;
 use Auth;
@@ -23,7 +24,7 @@ class ShoppingController extends Controller
     }
 
     public function moreDetails($id) {
-        $buy = Buy::find($id);   
+        $buy = Buy::find($id);  
         return view('details', compact('buy'));
     }
 
@@ -58,9 +59,9 @@ class ShoppingController extends Controller
     }
 
     public function makeOrder(Request $request) {        
-        $request->id;
-        $request->qty;
-        $request->sm;
+        $id = $request->id;
+        $qty = $request->qty;
+        $sm = $request->sm;
         $user = Auth::user();
 
         $buyerId = Auth::user()->id;
@@ -81,6 +82,10 @@ class ShoppingController extends Controller
             'quantity' => $request->qty,
             'total' => $request->qty * $publication->prices
         ]);
+            $updateSales = Sales::where([
+                'id' => $id
+            ])
+            ->update(['quantity' => $publication->quantity - $qty]);
 
         return view('thanks');
     }

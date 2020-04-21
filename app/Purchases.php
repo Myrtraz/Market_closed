@@ -13,4 +13,9 @@ class Purchases extends Model
     	'duesQty',
     	'amount',
     ];
+
+    public function cards()
+    {
+        return $this->belongsTo('App\Card', 'card_id');
+    }
 }

@@ -20,7 +20,7 @@
                 <div class="card mb-2">
                     <div class="card-body">
                         {{$buy->status}}, {{$buy->created_at->format('Y-m-d')}}
-                        <a href="#" class="btn btn-primary float-right">Volver a comprar</a>
+                        <a href="{{route('product', $buy->publication->id)}}" class="btn btn-primary float-right">Volver a comprar</a>
                         <br>
                         <br>
                         <a href="{{route('moreDetails', $buy->id)}}" class="float-right">Ver Detalles</a>

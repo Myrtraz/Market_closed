@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Buy;
 use App\Categories;
 use App\Sales;
 use Auth;
@@ -27,7 +28,14 @@ class HomeController extends Controller
 
     public function product($id) {
     	$product = Sales::find($id);
-    	return view('product', compact('product'));
+        $buy = Buy::get();
+
+        if (! is_null($buy)) {
+            $buySum = Buy::where('publish_id', $product->id)->sum('quantity');
+            $buySum = 'Vendidos' . ' ' . $buySum;
+
+        }
+    	return view('product', compact('product', 'buySum'));
     }
 
     public function searchBar(Request $request)
