@@ -78,6 +78,8 @@ Route::group(['middleware' =>'auth'], function() {
 	});
 
 	Route::group([], function (){
+		Route::get('message/{id}', 'MessageController@messageIndex')->name('privMessage');
+		Route::post('message/{id}', 'MessageController@sendMessage')->name('sendMessage');
 		Route::get('/logout', 'LoginController@logout')->name('logout');
 	});
 });

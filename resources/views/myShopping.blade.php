@@ -43,7 +43,7 @@
                                 <p class="font-weight-bold">Vendedor</p>
                                 <p class="h6">{{$buy->seller->name}} {{$buy->seller->lastname}}</p>
                                 <p class="h6">{{$buy->seller->phone}}</p>
-                                <a href="#">Ver mensajes</a>
+                                <a href="{{route('privMessage', ['message' => $buy->id])}}">Ver mensajes</a>
                             </div>
                         </div>
                     </div>
