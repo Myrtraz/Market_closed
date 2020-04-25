@@ -72,7 +72,9 @@
                     @if(Route::has('login'))
                     @auth
                     <div class="btn-group">
-                        <button type="button" class="btn cambioColor dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="background: #FFDD23; font-size: 14px;">User</button>
+                        <button type="button" class="btn cambioColor dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="background: #FFDD23; font-size: 14px;">
+                            {{ Auth::user()->name }}
+                        </button>
                         <div class="dropdown-menu dropdown-menu-lg-right">
                             <a href="{{route('myShopping')}}" class="dropdown-item">Compras</a>
                             <a href="{{route('sales')}}" class="dropdown-item">Ventas</a>
@@ -83,7 +85,10 @@
                     </div>
                     <a href="{{route('myShopping')}}" class="cambioColor text-decoration-none mx-2" style="font-size: 14px;">Mis compras</a>
                     <a href="#" class="cambioColor text-decoration-none mx-2" style="font-size: 14px;">Mis favoritos</a>
-                    <a href="#" class="cambioColor text-decoration-none mx-2 h5"><i class="fa fa-bell"></i></a>
+                    <a href="{{route('myNotifications')}}" class="cambioColor text-decoration-none mx-2 h5">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge badge-danger badge-pill">{{notificationCount()}}</span>
+                    </a>
                     @endauth
                     @endif
                 </div>

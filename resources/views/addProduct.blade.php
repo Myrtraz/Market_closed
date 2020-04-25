@@ -31,36 +31,45 @@ input[type=number] { -moz-appearance:textfield; }
 </style>
 <section class="py-3">
     <div class="container">
-        <form action="{{route('toSell')}}" method="post">
+        <form action="{{route('toSell')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-3 py-4">
-                    <input type="text" name="cover" class="form-control" placeholder="Url Images">
+                    <div class="container1">
+                        <button class="add_form_field btn btn-primary mb-3">Agrega más imagenes &nbsp;
+                            <span style="font-size:16px; font-weight:bold;">+ </span>
+                        </button>
+                        <div>
+                            <input type="file" name="cover" class="form-control">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-9 py-4">
+                <div class="col-2"></div>
+                <div class="col-7 py-4">
                     <input type="text" name="title" class="mb-2 form-control" placeholder="Titulo">
                     <div id="editor" class="mb-2" style="background: white;"></div>
                     <input type="hidden" name="description">
                     <select name="category_id" id="category_id" class="form-control mb-2">
                         @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                        <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
                     <input type="number" name="prices" class="mb-2 form-control col-4 float-right" placeholder="Precio">
                     <div class="mb-3">
-                        <select name="quantity" id="quantity" class="form-control col-2">
-                            @for($i = 1; $i <= 100; $i++)
-                                <option value="{{$i}}">{{$i}}</option>
-                            @endfor
-                        </select>
-                        <select name="status" id="status" class="form-control col-2">
-                            <option value="0" disabled="" selected="">Status del producto</option>
-                            <option value="Nuevo">Nuevo</option>
-                            <option value="Usado">Usado</option>
-                        </select>
+                        <div class="row">
+                            <select name="quantity" id="quantity" class="form-control col-4">
+                                <option value="0" disabled="" selected="">Cantidad</option>
+                                @for($i = 1; $i <= 100; $i++) <option value="{{$i}}">{{$i}}</option>
+                                    @endfor
+                            </select>
+                            <select name="status" id="status" class="form-control col-6 mx-2">
+                                <option value="0" disabled="" selected="">Status del producto</option>
+                                <option value="Nuevo">Nuevo</option>
+                                <option value="Usado">Usado</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="">
-                        
                     </div>
                     <button type="submit" class="btn btn-primary float-right">Agregar</button>
                 </div>
@@ -85,44 +94,30 @@ quill.on('text-change', function(delta, oldDelta, source) {
 });
 
 </script>
-<script type="text/javascript">
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#blah')
-                .attr('src', e.target.result);
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-</script>
 <script>
-$(function() {
-    // Multiple images preview in browser
-    var imagesPreview = function(input, placeToInsertImagePreview) {
+$(document).ready(function() {
+    var max_fields = 3;
+    var wrapper = $(".container1");
+    var add_button = $(".add_form_field");
 
-        if (input.files) {
-            var filesAmount = input.files.length;
-
-            for (i = 0; i < filesAmount; i++) {
-                var reader = new FileReader();
-
-                reader.onload = function(event) {
-                    $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
-                }
-
-                reader.readAsDataURL(input.files[i]);
-            }
+    var x = 0;
+    $(add_button).click(function(e) {
+        e.preventDefault();
+        if (x < max_fields) {
+            x++;
+            //add input box
+            $(wrapper).append('<div class=""><input type="file" name="cover'+x+'" class="form-control"/><a href="#" class="delete"><i class="fas fa-times text-danger"></i></a></div>'); 
+        } else {
+            alert('Has llegado al limite')
         }
-
-    };
-
-    $('#gallery-photo-add').on('change', function() {
-        imagesPreview(this, 'div.gallery');
     });
-});
+
+    $(wrapper).on("click", ".delete", function(e) {
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+    })
+})
 
 </script>
 @endsection

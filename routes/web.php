@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('home');
-});
+
+
+Route::get('/', 'HomeController@homeStart');
 
 Route::group([], function (){
 	Route::get('/register', 'RegisterController@registerClient')->name('register');
@@ -80,6 +80,8 @@ Route::group(['middleware' =>'auth'], function() {
 	Route::group([], function (){
 		Route::get('message/{id}', 'MessageController@messageIndex')->name('privMessage');
 		Route::post('message/{id}', 'MessageController@sendMessage')->name('sendMessage');
+		Route::get('notification', 'NotificationController@notificationIndex')->name('myNotifications');
+		Route::post('comment', 'CommentController@createComment')->name('comment');
 		Route::get('/logout', 'LoginController@logout')->name('logout');
 	});
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Buy;
 use App\Categories;
 use App\Http\Requests\AddProduct;
+use App\RemoteRepositories\ImgurRemoteRepository;
 use App\Sales;
 use Auth;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class SalesController extends Controller
     	return view('addProduct', compact('categories'));
     }
 
-    public function toSell(AddProduct $request){
+    public function toSell(Request $request){
         $user_id = Auth::user()->id;
     	$title = $request->title;
         $description = $request->description;
@@ -37,7 +38,11 @@ class SalesController extends Controller
         $prices = $request->prices;
         $quantity = $request->quantity;
         $status = $request->status;
-        $cover = $request->cover;
+        $cover = $this->upload($request->file('cover'));
+        $cover1 = $this->upload($request->file('cover1'));
+        $cover2 = $this->upload($request->file('cover2'));
+        $cover3 = $this->upload($request->file('cover3'));
+
 
 
 		$toSell = Sales::create([
@@ -49,8 +54,23 @@ class SalesController extends Controller
             'quantity' => $quantity,
             'status' => $status,
             'cover' => $cover,
+            'cover1' => $cover1,
+            'cover2' => $cover2,
+            'cover3' => $cover3,
         ]);
 
     	return redirect()->route('myProducts');
+    }
+
+    private function upload($file) {
+        if (is_null($file)) {
+            return null;
+        }
+
+        $img = new \stdClass;
+        $img->tmp_name = $file->getPathName();
+        $img->type = 'image/'. $file->extension();
+        $img->size = $file->getSize();
+        return ImgurRemoteRepository::upload($img);
     }
 }

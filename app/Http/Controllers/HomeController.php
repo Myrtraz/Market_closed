@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Buy;
 use App\Categories;
+use App\Comment;
 use App\Sales;
 use Auth;
 use Illuminate\Http\Request;
@@ -28,6 +29,7 @@ class HomeController extends Controller
 
     public function product($id) {
     	$product = Sales::find($id);
+        $comments = Comment::where('publish_id', $product->id)->get();
         $buy = Buy::get();
 
         if (! is_null($buy)) {
@@ -35,7 +37,7 @@ class HomeController extends Controller
             $buySum = 'Vendidos' . ' ' . $buySum;
 
         }
-    	return view('product', compact('product', 'buySum'));
+    	return view('product', compact('product', 'buySum', 'id', 'comments'));
     }
 
     public function searchBar(Request $request)

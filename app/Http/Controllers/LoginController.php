@@ -17,10 +17,11 @@ class LoginController extends Controller
             return back()->withErrors(['Invalid Credentials']);
         }
         return redirect()->route('home');
-  	 	}
 
-  	 public function logout(Request $request) {
-  		Auth::logout();
+  	}
+
+  	 public function logout() {
+  		  Auth::logout();
   		return redirect('home');
 	}
 }

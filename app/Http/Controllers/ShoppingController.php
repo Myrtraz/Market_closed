@@ -24,8 +24,14 @@ class ShoppingController extends Controller
     }
 
     public function moreDetails($id) {
-        $buy = Buy::find($id);  
-        return view('details', compact('buy'));
+        $buy = Buy::find($id);
+
+        $cardHash = '';
+        if (! is_null($buy->purchases->cards->creditCard)) {
+            $cardHash .= $buy->purchases->cards->creditCard;
+            $cardHash = str_repeat('*', 12) . substr($cardHash, -4);
+        }  
+        return view('details', compact('buy','cardHash'));
     }
 
     public function buy(Request $request) {

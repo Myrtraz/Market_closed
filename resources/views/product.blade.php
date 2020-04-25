@@ -83,6 +83,43 @@
                     <div>
                         {!!$product->description!!}
                     </div>
+                    <hr>
+                    <div class="">
+                        <h4 class="mb-3">Preguntas y Respuestas</h4>
+                    @auth
+                         <p>¿Qué quieres saber?</p>
+
+                         <div class="row mb-3">
+                            <a href="#" class="btn btn-outline-info mx-2">lorem</a>
+                            <a href="#" class="btn btn-outline-info mx-2">lorem</a>
+                            <a href="#" class="btn btn-outline-info">lorem</a>
+                         </div>
+
+                         <h5>O pregúntale al vendedor</h5>
+
+                         <form action="{{route('comment')}}" method="post" class="mb-3">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$id}}">
+                             <div class="row">
+                                 <div class="col-10">
+                                     <textarea name="comment" id="comment" cols="50" rows="5" class="form-control" style="resize: none;"></textarea>
+                                 </div>
+                                <div class="col-2" style="position: absolute; left: 84%; bottom: 20%">
+                                    <button type="submit" class="btn btn-primary">Preguntar</button>
+                                </div>
+                             </div>
+                         </form>
+                         @endauth
+                        <small class="h5 mb-4">Últimas preguntas</small>
+                            <p class="mb-4"></p>
+                        <div>
+                            @foreach($comments as $comment)
+                                <i class="far fa-comment-alt"></i><span> {{$comment->comment}}</span>
+                                    <p></p>
+                                <i class="far fa-comment-dots"></i><span class="text-muted"> Lorem ipsum dolor sit amet.</span>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

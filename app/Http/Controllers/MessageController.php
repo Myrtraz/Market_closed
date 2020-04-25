@@ -12,6 +12,12 @@ class MessageController extends Controller
 {
     public function messageIndex($id) {
         $messages = Message::where('buy_id', $id)->get();
+
+        Message::where([
+            'user_receive_id' => Auth::user()->id,
+            'is_readed' => false,
+            'buy_id' => $id
+        ])->update(['is_readed' => true]);
     	
         return view('message', compact('id', 'messages'));
     }

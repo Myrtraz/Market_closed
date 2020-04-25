@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-5">
                                 @if(! is_null($buy->purchases))
-                                <h5>{{$buy->purchases->cards->creditCard}}</h5>
+                                <h5>{{$cardHash}}</h5>
                                 @else
                                 <h5>{{$buy->payment_method_id}}</h5>
                                 @endif 
@@ -66,7 +66,7 @@
                     <div class="card-body">
                         <div class="card-title">
                             <h5 class="text-muted">Compraste</h5>
-                            <h4>Entregado el xx de mes</h4>
+                            <h4>Pending {{$buy->created_at->format('d/m/Y')}}</h4>
                             <hr>
                             <div class="row">
                                 <div class="col-3">

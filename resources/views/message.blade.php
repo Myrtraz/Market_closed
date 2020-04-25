@@ -1,6 +1,6 @@
 @extends('Layouts.messageForm')
 @section('title','Messages')
-@section('background', '#972247')
+@section('background', '#f7f1e3')
 @section('content')
 <section class="py-3">
     <div class="container">
@@ -89,8 +89,9 @@ textarea{
 <section>
     <div class="container">
         <div class="row">
+        	<a href="{{route('myShopping')}}"><i class="far fa-arrow-alt-circle-left h1 text-dark"></i></a>
             <div class="col overflow-auto">
-                <div class="contenedor overflow-auto">
+                <div class="contenedor overflow-auto" style="border: 1px solid grey;">
                     <div class="overflow-auto">
                         <div class="caja-chat">
                             <div class="caja ">
@@ -114,6 +115,7 @@ textarea{
                         <button type="submit" class="btn btn-success">Enviar</button>
                     </form>
                 </div>
+                <div class="mb-5"></div>
             </div>
         </div>
     </div>
