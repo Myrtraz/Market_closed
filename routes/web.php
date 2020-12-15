@@ -81,6 +81,7 @@ Route::group(['middleware' =>'auth'], function() {
 		Route::get('message/{id}', 'MessageController@messageIndex')->name('privMessage');
 		Route::post('message/{id}', 'MessageController@sendMessage')->name('sendMessage');
 		Route::get('notification', 'NotificationController@notificationIndex')->name('myNotifications');
+		//Route::get('trades', 'TradesController@tradesIndex')->name('trades');
 		Route::post('comment', 'CommentController@createComment')->name('comment');
 		Route::get('/logout', 'LoginController@logout')->name('logout');
 	});
