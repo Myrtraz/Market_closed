@@ -15,31 +15,32 @@ class ImgurRemoteRepository {
             $isImgValidType = 
                    $file->type == "image/png" 
                 || $file->type == "image/jpeg" 
+                || $file->type == "image/jpg" 
                 || $file->type == "image/gif";
             
           	if (! $isImgValidType) {
-        		return toJson([
+        		return [
         		    'message'=>'We do not support this image extension', 
         		    'uploaded'=>false,
         		    'file'=>$file
-        	    ]);
+        	    ];
         	}
         	
-        	if (! (($file->size / 1024 / 1024) <= 1)) {
-        		return toJson([
+        	if (! (($file->size / 1024 / 1024) <= 10)) {
+        		return [
         		    'message'=>'Exceeds our maximum file size', 
         		    'uploaded'=>false
-                ]);
+                ];
         	}
             
             $imageUploadedName = static::imgur($file, $album);
         	
         	if (isset($imageUploadedName['error'])) {
-        	    return toJson([
+        	    return [
             	    'message' => 'Error when try uploading', 
             	    'uploaded' => false,
             	    'error'=> $imageUploadedName
-                ]);
+                ];
         	}
         	
         	return  $imageUploadedName['image'];

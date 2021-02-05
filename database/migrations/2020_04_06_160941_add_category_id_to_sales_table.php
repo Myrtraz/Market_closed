@@ -16,6 +16,7 @@ class AddCategoryIdToSalesTable extends Migration
         Schema::table('sales', function (Blueprint $table) {
              $table->integer('category_id')->after('user_id');
              $table->string('status');
+             $table->boolean('to_exchange')->nullable();
         });
     }
 

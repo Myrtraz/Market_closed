@@ -18,6 +18,7 @@ class Sales extends Model
     	'cover1',
     	'cover2',
     	'cover3',
+        'to_exchange',
     ];
 
     

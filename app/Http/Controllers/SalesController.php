@@ -42,7 +42,7 @@ class SalesController extends Controller
         $cover1 = $this->upload($request->file('cover1'));
         $cover2 = $this->upload($request->file('cover2'));
         $cover3 = $this->upload($request->file('cover3'));
-
+        $to_exchange =  $request->to_exchange == "on";
 
 
 		$toSell = Sales::create([
@@ -57,7 +57,9 @@ class SalesController extends Controller
             'cover1' => $cover1,
             'cover2' => $cover2,
             'cover3' => $cover3,
+            'to_exchange' => $to_exchange,
         ]);
+
 
     	return redirect()->route('myProducts');
     }
