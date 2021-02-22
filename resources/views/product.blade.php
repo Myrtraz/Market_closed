@@ -61,18 +61,35 @@
                         <span class="text-muted" style="font-size: 12px;">Solo en zonas de Bogotá</span>
                     </p>
                     <form action="{{route('buy')}}" method="get">
+                        @csrf
+
+                        @if($isProductOwner)
+                            <div class="alert alert-danger" role="alert">
+                                 NO PUEDES COMPRARTE A TI MISMO   
+                            </div>
+                        @else
                         
-                        <div>
-                            <p>Cantidad</p>
-                            <select name="qty" id="quantity" class="form-control">
-                                @for ($i = 1; $i <= $product->quantity; $i++)
-                                    <option value="{{$i}}">{{$i}}</option>
-                                    @endfor
-                            </select>
-                            <input type="hidden" name="id" value="{{ $product->id }}">
-                            <p class="text-muted">({{$product->quantity}} unidades)</p>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Comprar</button>
+                        @if($stacks > 0)
+                         <div>
+                                <p>Cantidad</p>
+                                    <select name="qty" id="quantity" class="form-control">
+                                        @for ($i = 1; $i <= $product->quantity; $i++)
+                                            <option value="{{$i}}">{{$i}}</option>
+                                        @endfor
+                                    </select>
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                <p class="text-muted">({{$product->quantity}} unidades)</p>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Comprar</button>
+                            
+                        @else
+                           <div class="alert alert-warning" role="alert">
+                                 No hay unidades para comerciar
+                            </div>
+
+                            <button type="submit" class="btn btn-secondary btn-block" disabled="true">Comprar</button>
+                            @endif
+                        @endif
                     </form>
                 </div>
                 <hr>

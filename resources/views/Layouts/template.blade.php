@@ -45,9 +45,11 @@
                 </div>
             </div>
             <div>
-                <a href="#" class="text-decoration-none text-dark">
+                <div class="">
+                    <a href="#" class="text-decoration-none text-dark">
                     <p><span class="h4"><i class="fas fa-home"></i></span> Compras sin salir de casa</p>
                 </a>
+                </div>
                 <div>
                     @guest
                     <a href="{{route('register')}}" class="cambioColor text-decoration-none mx-2" style="font-size: 14px;">Crear Cuenta</a>

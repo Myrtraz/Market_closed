@@ -15,6 +15,11 @@ class TradesController extends Controller
         $myTrades = Sales::where('user_id', $user)
         ->where('to_exchange', true)
         ->get();
+
+        //$isProductOwner = Sales::where('user_id', $user_id)
+        //->where('id', $id)
+        //->count() > 0;
+        
     	return view('trades', compact('myTrades'));
     }
 

@@ -28,6 +28,7 @@ class HomeController extends Controller
     }
 
     public function product($id) {
+        $user_id = Auth::user()->id;
     	$product = Sales::find($id);
         $comments = Comment::where('publish_id', $product->id)->get();
         $buy = Buy::get();
@@ -37,7 +38,16 @@ class HomeController extends Controller
             $buySum = 'Vendidos' . ' ' . $buySum;
 
         }
-    	return view('product', compact('product', 'buySum', 'id', 'comments'));
+
+        $isProductOwner = Sales::where('user_id', $user_id)
+        ->where('id', $id)
+        ->count() > 0;
+
+        $stacks = Sales::where('quantity', $product->quantity)
+        ->where('id', $id)
+        ->count() > 0;
+
+    	return view('product', compact('user_id','product', 'buySum', 'id', 'comments', 'isProductOwner', 'stacks'));
     }
 
     public function searchBar(Request $request)

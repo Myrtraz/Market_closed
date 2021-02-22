@@ -24,7 +24,7 @@ Route::group([], function (){
 
 Route::group([], function (){
 	Route::get('/home', 'HomeController@homeStart')->name('home');
-	Route::get('/product/{id}', 'HomeController@product')->name('product');
+	Route::get('home/product/{id}', 'HomeController@product')->name('product');
 	Route::get('/vendor', 'AccountController@vendor')->name('vendor');
 	Route::get('/search', 'HomeController@searchBar')->name('search');
 	Route::get('/categories/{id}', 'HomeController@categories')->name('categories');
